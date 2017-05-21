@@ -1,39 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Gotchu</title>
+	<title>Gotcha</title>
 	<!-- Jqery Cdn -->
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<!-- Sass -->
 	<link rel="stylesheet" type="text/css" href="public/assets/css/main.css">
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
 <body>
-<!--
-    you can substitue the span of reauth email for a input with the email and
-    include the remember me checkbox
-    -->
-    <div class="container">
-        <div class="card card-container">
-            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-            <img id="profile-img" class="profile-img-card" src="https://s-media-cache-ak0.pinimg.com/736x/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg" />
-            <p id="profile-name" class="profile-name-card"></p>
-            <form class="form-signin">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                <div id="remember" class="checkbox">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Remember me
-                    </label>
-                </div>
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
-            </form><!-- /form -->
-            <a href="#" class="forgot-password">
-                Forgot the password?
-            </a>
-        </div><!-- /card-container -->
-    </div><!-- /container -->
-	<script type="text/javascript" src="js/login.js"></script>
+	<div class="logo">
+		<div class="container background">
+			<div class="logo">
+				<img class="img-responsive" src="public/assets/images/team.png" alt="teamImage">
+			</div>
+			<!-- Title -->
+			<div class="title text-center">
+				<h1>GOTCHA</h1>
+			</div>
+			<!-- Form -->
+			<form action="">
+					<input class="username" type="text" name="username" placeholder="Username">
+						<br>
+					<input class="password" type="text" name="username" placeholder="Password">
+			</form>
+		</div>
+	</div>
 </body>
+<!-- Live Reload -->
+<script type="text/javascript" src="http://localhost:35729/livereload.js"></script>
+<script type="text/javascript" src="public/assets/js/login.js"></script>
 </html>

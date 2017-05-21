@@ -1,0 +1,9 @@
+  input {
+    border: none;
+    text-align: center;
+    margin-top: $inputSpace;
+    background: $inputBackground;
+  }
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: $formText;
+}
