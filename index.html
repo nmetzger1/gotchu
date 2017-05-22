@@ -12,7 +12,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
 <body>
-	<div class="logo">
+	<div class="wrapper">
 		<div class="container background">
 			<div class="logo">
 				<img class="img-responsive" src="public/assets/images/team.png" alt="teamImage">
@@ -23,10 +23,14 @@
 			</div>
 			<!-- Form -->
 			<form action="">
-					<input class="username" type="text" name="username" placeholder="Username">
-						<br>
-					<input class="password" type="text" name="username" placeholder="Password">
+					<input id="username" type="text" name="username" placeholder="Username">
+					<input id="password" type="password" name="password" placeholder="Password">
+					<input id="signIn" type="submit" value="Sign In">
 			</form>
+			<!-- SignUp -->
+			<div id="createAccount">
+					<h2>Don't have an account? <a href="#">Sign Up</a></h2>
+			</div>
 		</div>
 	</div>
 </body>
