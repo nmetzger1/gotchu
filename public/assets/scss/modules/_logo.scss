@@ -1,5 +1,9 @@
-img {
-    width: $logoWidth;
-    height: $logoHeight;
-    margin: $logoSpace;
+.logoSignIn{
+    width: $logoSignInWidth;
+    margin: $logoSignInSpace;
+}
+
+.logoSignUp {
+    width: $logoSignUpWidth;
+    margin: $logoSignUpSpace;
 }
