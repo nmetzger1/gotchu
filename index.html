@@ -1,42 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Sass Demo</title>
+	<title>Gotcha</title>
+	<!-- Jqery Cdn -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<!-- Sass -->
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="public/assets/css/main.css">
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
 <body>
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<nav class="navbar-header">
-				<ul class="nav navbar-nav">
-					<li>
-						<a class='navbar-brand home' href="#">Home</a>
-					</li>
-					<li>
-						<a class='navbar-brand' href="#">Link</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</nav>
-
-	<form action="" method="POST" role="form">
-		<div class="jumbotron">
-			<div class="container">
-				<h1>Sassy</h1>
-				<div class="form-group">
-					<label for="">Name</label>
-					<input type="text" class="form-control" id="" placeholder="Input field">
-					
-					<label for="">Password</label>
-					<input type="text" class="form-control" id="" placeholder="Input field">
-				</div>
-				<button type="submit" class="btn btn-primary">Submit</button>
+	<div class="wrapper">
+		<div class="container background">
+			<div class="logo">
+				<img class="img-responsive" src="public/assets/images/team.png" alt="teamImage">
+			</div>
+			<!-- Title -->
+			<div class="title text-center">
+				<h1>GOTCHA</h1>
+			</div>
+			<!-- Form -->
+			<form action="">
+					<input id="username" type="text" name="username" placeholder="Username">
+					<input id="password" type="password" name="password" placeholder="Password">
+					<input id="signIn" type="submit" value="Sign In">
+			</form>
+			<!-- SignUp -->
+			<div id="createAccount">
+					<h2>Don't have an account? <a href="#">Sign Up</a></h2>
 			</div>
 		</div>
-	</form>
+	</div>
 </body>
+<!-- Live Reload -->
+<script type="text/javascript" src="http://localhost:35729/livereload.js"></script>
+<script type="text/javascript" src="public/assets/js/login.js"></script>
 </html>

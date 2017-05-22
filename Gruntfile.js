@@ -8,7 +8,7 @@ module.exports = function (grunt) {
                 },
                 files: {
                     //Where it complies to, Watches
-                    'css/main.css': 'scss/main.scss'
+                    'public/assets/css/main.css': 'public/assets/scss/main.scss'
                 }
             }
         },
