@@ -1,14 +1,9 @@
-#username {
+.userInput {
   @include formInput;
   margin: 2% auto 0 auto;
   width: 100%;
 }
 
-#password {
-  @include formInput;
-  margin: 2% auto 5% auto;
-  width: 100%;
-}
 // Input Placeholder color
 ::-webkit-input-placeholder {
   color: $formText;

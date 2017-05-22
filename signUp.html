@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Gotcha</title>
+	<title>SignUp</title>
 	<!-- Jqery Cdn -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 	<!-- Latest compiled and minified CSS -->
@@ -14,23 +14,18 @@
 <body>
 	<div class="wrapper">
 		<div class="container background">
-			<div class="logo">
+			<div class="logo logoSignUp">
 				<img class="img-responsive" src="public/assets/images/team.png" alt="teamImage">
-			</div>
-			<!-- Title -->
-			<div class="title text-center">
-				<h1>GOTCHA</h1>
 			</div>
 			<!-- Form -->
 			<form action="">
-					<input id="username" type="text" name="username" placeholder="Username">
-					<input id="password" type="password" name="password" placeholder="Password">
-					<input id="signIn" type="submit" value="Sign In">
+					<input class="userInput username" type="text" name="username" placeholder="Username">
+					<input class="userInput email" type="email" name="email" placeholder="E-mail">
+					<input class="userInput password" type="password" name="password" placeholder="Password">
+					<input class="userInput confirmPass" type="password" name="confirmPassword" placeholder="Confirm Password">
+					<input class="userInput zipcode" type="number" name="zipcode" placeholder="Zipcode">
+					<input class="signUp" type="submit" value="Sign Up">
 			</form>
-			<!-- SignUp -->
-			<div id="createAccount">
-					<h2>Don't have an account? <a href="#">Sign Up</a></h2>
-			</div>
 		</div>
 	</div>
 </body>
