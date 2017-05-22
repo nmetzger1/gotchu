@@ -1,20 +1,20 @@
 // Removes Place holder on click USERNAME
-$(document).on("focus" , ".username" , function () {
+$(document).on("focus" , "#username" , function () {
 
            $(this).removeAttr('placeholder');
        });
-$(document).on("focusout" , ".username" , function () {
+$(document).on("focusout" , "#username" , function () {
 
          if($(this).val() == ''){
              $(this).attr('placeholder' , "Username");
          }
    });
 // Removes Place holder on click PASSWORD
-$(document).on("focus" , ".password" , function () {
+$(document).on("focus" , "#password" , function () {
 
            $(this).removeAttr('placeholder');
        });
-$(document).on("focusout" , ".password" , function () {
+$(document).on("focusout" , "#password" , function () {
 
          if($(this).val() == ''){
              $(this).attr('placeholder' , "Password");
