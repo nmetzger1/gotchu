@@ -1,5 +1,3 @@
-
-
 // Server.js - This file is the initial starting point for the Node/Express server.
 
 //Dependencies
@@ -7,6 +5,13 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
+var passport = require("passport");
+var flash = require("connect-flash");
+
+var morgan       = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser   = require('body-parser');
+var session      = require('express-session');
 
 // Sets up the Express App
 
@@ -28,10 +33,23 @@ app.use(methodOverride("_method"));
 // Static directory
 app.use(express.static("./public"));
 
+// Passport Settings
+require("./config/passport")(passport);
+
+app.use(morgan('dev'));
+app.use(cookieParser());
+app.use(bodyParser());
+
+app.use(session({secret: 'thisisasupersecretthing'}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
 // Routes
 
 //Require ROUTES
-require("./routes/api-routes.js")(app);
+require("./routes/api-routes.js")(app, passport);
+require("./routes/html-routes.js")(app, passport);
 
 
 // Syncing our sequelize models and then starting our express app
@@ -40,9 +58,3 @@ db.sequelize.sync({ force: true }).then(function() {
         console.log("App listening on PORT: " + PORT);
     });
 });
-
-
-
-
-
-
