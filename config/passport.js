@@ -10,6 +10,8 @@ module.exports = function (passport) {
 
     //serialize the user's session
     passport.serializeUser(function (user, done) {
+
+        console.log("SER USER", user);
         done(null, user.id)
     });
 
@@ -33,8 +35,6 @@ module.exports = function (passport) {
         function (req, email, password, done) {
             process.nextTick(function () {
 
-                console.log("REQ", req);
-
                 db.User.findOne({
                     where: {
                         'email': email
@@ -55,7 +55,7 @@ module.exports = function (passport) {
                         };
 
                         db.User.create(newUser).then(function (result) {
-                            return done(null, newUser);
+                            return done(null, result.dataValues);
                         })
 
                     }

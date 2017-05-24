@@ -1,17 +1,5 @@
 module.exports = function (app, passport) {
 
-    //Home Page
-    // app.get("/", function (req, res) {
-    //     res.redirect('../signIn.html');
-    // });
-
-    //Login Form
-    // app.get("/login", function (req, res) {
-    //     //pass in flash info (if available)
-    //     res.redirect('../signIn.html');
-    //     //res.render('login.ejs', { message: req.flash('loginMessage') });
-    // });
-
     // //Process Login
     app.post("/login", passport.authenticate('local-login', {
         successRedirect: '/profile',
@@ -19,19 +7,13 @@ module.exports = function (app, passport) {
         failureFlash: true
     }));
 
-    // //Signup
-    // //Display Login Page
-    // app.get("/signup", function (req, res) {
-    //     res.render('signup.ejs', { message: req.flash('signupMessage') });
-    // });
-    //
     // //Process Signup
     app.post("/signup", passport.authenticate ('local-signup', {
         successRedirect: '/profile',
         failureRedirect: '/signup',
         failureFlash: true
     }));
-    //
+
     // //USER PROFILE
     // app.get("/profile", isLoggedIn, function (req, res) {
     //     res.render('profile.ejs', {

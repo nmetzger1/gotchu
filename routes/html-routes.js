@@ -5,10 +5,36 @@ module.exports = function (app, passport) {
 
     //Home Page
     app.get("/", function (req, res) {
-        res.sendFile(path.join (__dirname + "/../signIn.html"));
+        res.sendFile(path.join (__dirname + "/../public/signIn.html"));
     });
 
+    //SIGNUP
     app.get("/signup", function (req, res) {
-        res.sendfile(path.join (__dirname + "/../signUp.html"));
+        res.sendfile(path.join (__dirname + "/../public/signUp.html"));
     });
+
+    //PROFILE PAGE
+    app.get("/profile", isLoggedIn, function (req, res) {
+
+        console.log("PROFILE REQ", req.user);
+
+        var options = {
+            user: req.user
+        };
+        res.sendfile(path.join (__dirname + "/../public/loggedIn.html"), options);
+    });
+
+    //LOGOUT
+    app.get("/logout", function (req, res) {
+        req.logout();
+        res.redirect("/");
+    });
+
+    //Is Logged In Middleware
+    function isLoggedIn(req, res, next) {
+        if(req.isAuthenticated())
+            return next();
+
+        res.redirect("/");
+    }
 };
