@@ -10,8 +10,6 @@ module.exports = function (passport) {
 
     //serialize the user's session
     passport.serializeUser(function (user, done) {
-
-        console.log("SER USER", user);
         done(null, user.id)
     });
 
@@ -62,7 +60,39 @@ module.exports = function (passport) {
                 })
             })
 
-        }))
+        }));
+
+    //LOGIN
+    passport.use('local-login', new LocalStrategy({
+        usernameField: 'username',
+        passwordField: 'password',
+        passReqToCallback: true
+    },
+    function (req, username, password, done) {
+
+        db.User.findOne({
+            where: {
+                username: username
+            }
+        }).then(function (user) {
+
+            //Username not found
+            if(user === null){
+                console.log("no username");
+                return done(null, false, req.flash('loginMessage', 'Username not found.'));
+            }
+
+            //Password doesn't match
+            if(db.User.validPassword(password, user.password) === false){
+
+                console.log("no password");
+                return done(null, false, req.flash('loginMessage', 'You have entered an invalid password.'));
+            }
+
+            //Everything matches
+            return done(null, user);
+        })
+    }))
 
 
 

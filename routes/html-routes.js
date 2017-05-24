@@ -10,18 +10,16 @@ module.exports = function (app, passport) {
 
     //SIGNUP
     app.get("/signup", function (req, res) {
-        res.sendfile(path.join (__dirname + "/../public/signUp.html"));
+        res.sendFile(path.join (__dirname + "/../public/signUp.html"));
     });
 
     //PROFILE PAGE
     app.get("/profile", isLoggedIn, function (req, res) {
 
-        console.log("PROFILE REQ", req.user);
-
         var options = {
             user: req.user
         };
-        res.sendfile(path.join (__dirname + "/../public/loggedIn.html"), options);
+        res.sendFile(path.join (__dirname + "/../public/loggedIn.html"), options);
     });
 
     //LOGOUT
