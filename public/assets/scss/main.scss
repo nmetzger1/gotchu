@@ -2,9 +2,9 @@
 @import 'base/_mixins.scss';
 @import 'base/_reset.scss';
 @import 'base/_base.scss';
-@import 'base/_memberPage.scss';
-@import 'base/_memberForm.scss';
-@import 'base/_posting.scss';
+@import 'layout/_memberPage';
+@import 'layout/_memberForm';
+@import 'layout/_posting';
 
 @import 'layout/header.scss';
 @import 'layout/footer.scss';
