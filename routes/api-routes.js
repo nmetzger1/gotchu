@@ -1,3 +1,5 @@
+var request = require("request")
+
 module.exports = function (app, passport) {
 
     // //Process Login
@@ -13,25 +15,22 @@ module.exports = function (app, passport) {
         failureRedirect: '/signup',
         failureFlash: true
     }));
+    
+    // ZIP Code Distance
+    app.get("/distance/:zip1/:zip2", function (req, res) {
 
-    // //USER PROFILE
-    // app.get("/profile", isLoggedIn, function (req, res) {
-    //     res.render('profile.ejs', {
-    //         user: req.user
-    //     })
-    // });
-    //
-    // //LOG OUT
-    // app.get("/logout", function (req, res) {
-    //     req.logout();
-    //     res.redirect("/");
-    // });
-    //
-    // //Is Logged In Middleware
-    // function isLoggedIn(req, res, next) {
-    //     if(req.isAuthenticated())
-    //         return next();
-    //
-    //     res.redirect("/");
-    // }
+        var apiKey = "TnOsJmjZelySeFmJtljdbvsLKmTiZ2qSqekaBE9PZIIen4YQqh4BNwmxSgQSigKJ";
+        var zip1 = req.params.zip1;
+        var zip2 = req.params.zip2;
+
+        var query = "https://www.zipcodeapi.com/rest/" + apiKey + "/distance.json/" + zip1 + "/" + zip2 + "/mile";
+
+        request(query, function (err, response, body) {
+            if(err){
+                console.log(err);
+            }
+
+            res.json(body);
+        })
+    });
 };
