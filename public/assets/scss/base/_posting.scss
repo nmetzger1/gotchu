@@ -1,0 +1,15 @@
+.postSection {
+  height: 10em;
+  width: 100%;
+  border-bottom: 1px solid gray;
+  .postings {
+    @include postSection;
+    border: 2px solid red;
+    width: 20%;
+  }
+  .dummyPost {
+    @include postSection;
+    border: 2px solid orange;
+    width: 70%;
+  }
+}

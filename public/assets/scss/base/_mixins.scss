@@ -1,0 +1,24 @@
+// Input Form
+@mixin formInput {
+    border: none;
+    text-align: center;
+    background: $inputBackground;
+    border-bottom: 1px solid rgba(255, 255, 255, .2);
+    color: white;
+    padding: 3%;
+  }
+
+@mixin signBtn {
+  background-color: #FF2D56;
+  border: none;
+  border-radius: 10px;
+  width: 70%;
+  height: 40px;
+  color: white;
+}
+
+@mixin postSection {
+  float: left;
+  height: 60%;
+  margin: 4% 0 0 2%;
+}

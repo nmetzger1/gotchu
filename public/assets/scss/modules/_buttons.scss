@@ -1,12 +1,14 @@
+// Sign In Button
 .signIn {
   @include signBtn;
   margin: 50px 0 20px 0;
 }
-
+// Sign Up button
 .signUp {
   @include signBtn;
   margin: 50px 0 50px 0;
 }
+// Create Account Link
 .createAccount {
   color: white;
   padding: 50px;
