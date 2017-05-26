@@ -17,8 +17,20 @@
   color: white;
 }
 
-@mixin postSections {
+@mixin postImage {
+  border: 2px solid black;
   float: left;
   height: 60%;
   margin: 4% 0 0 2%;
+  overflow: hidden;
+  width: 20%;
+}
+
+@mixin postText {
+  border: 2px solid black;
+  float: left;
+  height: 60%;
+  margin: 4% 0 0 2%;
+  overflow: hidden;
+  width: 70%;
 }

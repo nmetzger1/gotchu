@@ -17,6 +17,8 @@
     <link rel="stylesheet" type="text/css" href="public/assets/css/main.css">
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <!--Font Awesome-->
+    <script src="https://use.fontawesome.com/a69674a2c5.js"></script>
 </head>
 <meta charset="utf-8">
 <title>Member</title>
@@ -33,7 +35,8 @@
                 <h2>Create Your Post</h2>
                 <!--search-->
                 <form class="searchForm" action="">
-                    <input class="search" type="text" name="" placeholder="Search">
+                    <input type="text" id="searchFilter" placeholder="Search for names..">
+                    <!--<i class="fa fa-search icon-6x"></i>-->
                     <input class="searchSubmit" type="submit" value="Search">
                 </form>
                 <div class="navHeadSection">
@@ -57,38 +60,78 @@
 <!-- Navbar -->
 <nav class="navbarSection">
     <ul>
-        <li><a href="">All</a></li>
-        <li><a href="">House</a></li>
-        <li><a href="">Car</a></li>
-        <li><a href="">Pets</a></li>
-        <li><a href="">Other Services</a></li>
+        <li><a class="all" href="">All</a></li>
+        <li><a class="house" href="">House</a></li>
+        <li><a class="car" href="">Car</a></li>
+        <li><a class="pet" href="">Pets</a></li>
+        <li><a class="other" href="">Other Services</a></li>
     </ul>
 </nav>
-<!-- Postings -->
-<div class="postSection">
-    <!--Image-->
-    <div class="postings">
-        <img src="http://americanlawncareidaho.com/wp-content/uploads/2013/11/lawncare-boise.jpg" alt="">
-        Posting Section
-    </div>
-    <!--Text-->
-    <div class="dummyPost">
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has </p>
-        <button data-toggle="modal" href="#postInfo" >Love to help</button>
-        <button>Send a message</button>
+
+
+<!--Post Container-->
+<!--COME BACK TO THIS *************** REFRACTOR-->
+<!-- Car Posting -->
+<div id="car" class="hide">
+    <div class="postContainer">
+        <!--Image-->
+        <div class="postImage">
+            <p>Car</p>
+            Posting Section
+        </div>
+        <!--Text-->
+        <div class="userText">
+            <p>Car</p>
+            <button data-toggle="modal" href="#postInfo" >Love to help</button>
+        </div>
     </div>
 </div>
 
-<!--Postings-->
-<div class="postSection">
-    <div class="postings">
-        <img src="http://americanlawncareidaho.com/wp-content/uploads/2013/11/lawncare-boise.jpg" alt="">
-        Posting Section
+<!-- House Posting -->
+<div id="house" class="hide">
+    <div class="postContainer">
+        <!--Image-->
+        <div class="postImage">
+            <p>house</p>
+            Posting Section
+        </div>
+        <!--Text-->
+        <div class="userText">
+            <p>House</p>
+            <button data-toggle="modal" href="#postInfo" >Love to help</button>
+        </div>
     </div>
-    <div class="dummyPost">
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has </p>
-        <button data-toggle="modal" href="#postInfo" >Love to help</button>
-        <button>Send a message</button>
+</div>
+
+<!--Pets container-->
+<div id="pet" class="hide">
+    <div class="postContainer">
+        <!--Image-->
+        <div class="postImage">
+            <p>Pet</p>
+            Posting Section
+        </div>
+        <!--Text-->
+        <div class="userText">
+            <p>pet</p>
+            <button data-toggle="modal" href="#postInfo" >Love to help</button>
+        </div>
+    </div>
+</div>
+
+<!--Other container-->
+<div id="other" class="hide">
+    <div class="postContainer">
+        <!--Image-->
+        <div class="postImage">
+            <p>other</p>
+            Posting Section
+        </div>
+        <!--Text-->
+        <div class="userText">
+            <p>other</p>
+            <button data-toggle="modal" href="#postInfo" >Love to help</button>
+        </div>
     </div>
 </div>
 
@@ -114,5 +157,8 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<!--Javascript-->
+<script src="public/assets/js/post.js"></script>
+<script src="public/assets/js/filter.js"></script>
 </body>
 </html>

@@ -1,20 +1,19 @@
-.postSection {
+.postContainer {
   height: 20em;
   width: 100%;
   border-bottom: 1px solid gray;
-  .postings {
-    @include postSections;
-    border: 2px solid black;
-    width: 20%;
-    overflow: hidden;
+  .postImage {
+    @include postImage;
   }
 }
-.dummyPost {
-  @include postSections;
-  border: 2px solid orange;
-  width: 70%;
+.userText {
+  @include postText;
 }
 
-.searchForm {
-  float: right;
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
 }
