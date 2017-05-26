@@ -1,0 +1,20 @@
+.postSection {
+  height: 20em;
+  width: 100%;
+  border-bottom: 1px solid gray;
+  .postings {
+    @include postSections;
+    border: 2px solid black;
+    width: 20%;
+    overflow: hidden;
+  }
+}
+.dummyPost {
+  @include postSections;
+  border: 2px solid orange;
+  width: 70%;
+}
+
+.searchForm {
+  float: right;
+}

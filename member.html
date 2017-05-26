@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Jqery Cdn -->
+    <script  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!--Bootstrap Javascript-->
+    <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Sass -->
+    <link rel="stylesheet" type="text/css" href="public/assets/css/main.css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+</head>
+<meta charset="utf-8">
+<title>Member</title>
+</head>
+
+<body>
+<div class="wrapper">
+    <!-- Header -->
+    <div class="headerMemb img-responsive">
+        <!--Transparent Layer-->
+        <nav class="layer">
+            <!--Form to create Post-->
+            <div class="createPostHead">
+                <h2>Create Your Post</h2>
+                <!--search-->
+                <form class="searchForm" action="">
+                    <input class="search" type="text" name="" placeholder="Search">
+                    <input class="searchSubmit" type="submit" value="Search">
+                </form>
+                <div class="navHeadSection">
+                    <ul>
+                        <li><a href="">All</a></li>
+                        <li><a href="">House</a></li>
+                        <li><a href="">Car</a></li>
+                        <li><a href="">Pets</a></li>
+                        <li><a href="">Other Services</a></li>
+                    </ul>
+                    <form action="">
+                        <input class="headerText" type="text" name="" placeholder="Create your posts">
+                        <br>
+                        <input class="headerSubmit" type="submit" value="Post">
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<!-- Navbar -->
+<nav class="navbarSection">
+    <ul>
+        <li><a href="">All</a></li>
+        <li><a href="">House</a></li>
+        <li><a href="">Car</a></li>
+        <li><a href="">Pets</a></li>
+        <li><a href="">Other Services</a></li>
+    </ul>
+</nav>
+<!-- Postings -->
+<div class="postSection">
+    <!--Image-->
+    <div class="postings">
+        <img src="http://americanlawncareidaho.com/wp-content/uploads/2013/11/lawncare-boise.jpg" alt="">
+        Posting Section
+    </div>
+    <!--Text-->
+    <div class="dummyPost">
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has </p>
+        <button data-toggle="modal" href="#postInfo" >Love to help</button>
+        <button>Send a message</button>
+    </div>
+</div>
+
+<!--Postings-->
+<div class="postSection">
+    <div class="postings">
+        <img src="http://americanlawncareidaho.com/wp-content/uploads/2013/11/lawncare-boise.jpg" alt="">
+        Posting Section
+    </div>
+    <div class="dummyPost">
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has </p>
+        <button data-toggle="modal" href="#postInfo" >Love to help</button>
+        <button>Send a message</button>
+    </div>
+</div>
+
+<!--modal-->
+<div class="modal fade" id="postInfo">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has </p>
+       <!--Request to help-->
+                <button class="btn-danger">
+                    Love to help
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</body>
+</html>

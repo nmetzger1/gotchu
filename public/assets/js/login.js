@@ -55,3 +55,14 @@ $(document).on("focusout" , ".zipcode" , function () {
              $(this).attr('placeholder' , "Zipcode");
          }
    });
+// Removes Place holder on click confirm Phone
+$(document).on("focus" , ".phone" , function () {
+
+           $(this).removeAttr('placeholder');
+       });
+$(document).on("focusout" , ".phone" , function () {
+
+         if($(this).val() == ''){
+             $(this).attr('placeholder' , "Phone");
+         }
+   });
