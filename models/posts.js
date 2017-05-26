@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             validate: {
                 len: {
-                    args: [10, 100]
+                    args: [1, 100]
                 }
             }
         },
@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             validate: {
                 len: {
-                    args: [10, 500]
+                    args: [1, 500]
                 }
             }
         },

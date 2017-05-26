@@ -1,4 +1,5 @@
-var request = require("request")
+var request = require("request");
+var db = require("../models");
 
 module.exports = function (app, passport) {
 
@@ -15,7 +16,25 @@ module.exports = function (app, passport) {
         failureRedirect: '/signup',
         failureFlash: true
     }));
-    
+
+    //CREATE POST
+    app.post("/post/create", function (req, res) {
+
+        console.log("POST USER", req.user.id);
+
+        console.log("REQ", req.body);
+
+        var newPost = {
+            title: "test",
+            description: req.body.description,
+            UserId: req.user.id
+        };
+
+        db.Post.create(newPost).then(function () {
+            res.redirect("/member");
+        });
+    });
+
     // ZIP Code Distance
     app.get("/distance/:zip1/:zip2", function (req, res) {
 
