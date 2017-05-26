@@ -22,6 +22,15 @@ module.exports = function (app, passport) {
         res.sendFile(path.join (__dirname + "/../public/loggedIn.html"), options);
     });
 
+    //MEMBER PAGE
+    app.get("/member", isLoggedIn, function (req, res) {
+
+        var options = {
+            user: req.user
+        };
+        res.sendFile(path.join (__dirname + "/../public/member.html"), options);
+    });
+
     //LOGOUT
     app.get("/logout", function (req, res) {
         req.logout();

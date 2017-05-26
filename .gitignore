@@ -107,3 +107,5 @@ typings/
 /yarn.lock
 
 .idea/
+/desktop.ini
+/bash.exe.stackdump

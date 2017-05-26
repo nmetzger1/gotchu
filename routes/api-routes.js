@@ -4,7 +4,7 @@ module.exports = function (app, passport) {
 
     // //Process Login
     app.post("/login", passport.authenticate('local-login', {
-        successRedirect: '/profile',
+        successRedirect: '/member',
         failureRedirect: '/',
         failureFlash: true
     }));
@@ -19,18 +19,20 @@ module.exports = function (app, passport) {
     // ZIP Code Distance
     app.get("/distance/:zip1/:zip2", function (req, res) {
 
-        var apiKey = "TnOsJmjZelySeFmJtljdbvsLKmTiZ2qSqekaBE9PZIIen4YQqh4BNwmxSgQSigKJ";
+        var apiKey = "AIzaSyCCV5MXvW_T_3aruX8UepqRyA1Q-aEWhFA";
         var zip1 = req.params.zip1;
         var zip2 = req.params.zip2;
 
-        var query = "https://www.zipcodeapi.com/rest/" + apiKey + "/distance.json/" + zip1 + "/" + zip2 + "/mile";
+        var query = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + zip1 + "&destinations=" + zip2 + "&key=" + apiKey;
 
         request(query, function (err, response, body) {
             if(err){
                 console.log(err);
             }
 
-            res.json(body);
+            var data = JSON.parse(body);
+
+            res.json(data);
         })
     });
 };
