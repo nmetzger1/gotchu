@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
                 }
             }
         },
-        description: {
+        body: {
             type: DataTypes.TEXT,
             allowNull: false,
             validate: {
@@ -19,6 +19,10 @@ module.exports = function(sequelize, DataTypes) {
                     args: [1, 500]
                 }
             }
+        },
+        category: {
+            type: DataTypes.STRING,
+            defaultValue: "Personal"
         },
         isActive: {
             type: DataTypes.BOOLEAN,
