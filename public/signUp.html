@@ -4,6 +4,8 @@
 	<title>SignUp</title>
 	<!-- Jqery Cdn -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="jquery.js"></script>
+	<script src="parsley.min.js"></script>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<!-- Sass -->
@@ -18,19 +20,25 @@
 				<img class="img-responsive" src="assets/images/team.png" alt="teamImage">
 			</div>
 			<!-- Form -->
-			<form action="/signup" method="post">
-					<input class="userInput username" type="text" name="username" placeholder="Username">
-					<input class="userInput email" type="email" name="email" placeholder="E-mail">
-					<input class="userInput password" type="password" name="password" placeholder="Password">
-					<input class="userInput confirmPass" type="password" name="confirmPassword" placeholder="Confirm Password">
-					<input class="userInput zipcode" type="number" name="zipcode" placeholder="Zipcode">
-					<input class="userInput phone" type="number" name="phone" placeholder="Phone">
+			<form id="signup" action="/signup" method="post" data-parsley-validate="true">
+					<input class="userInput username" type="text" name="username" placeholder="Username" data-parsley-length="[2, 50]" required="true">
+					<input class="userInput email" type="email" name="email" placeholder="E-mail" data-parsley-type="email" required="">
+					<input class="userInput password" type="password" name="password" placeholder="Password" data-parsley-length="[6, 200]" required="required">
+					<input class="userInput confirmPass" type="password" name="confirmPassword" placeholder="Confirm Password" data-parsley-length="[6, 200]" required="">
+					<input class="userInput zipcode" type="number" name="zipcode" placeholder="Zipcode" data-parsley-type="digits" data-parsley-length="[5, 5]" data-parsley-zip="us" required="">
+					<input class="userInput phone" type="tel" name="phone" pattern="^\d{3}-\d{3}-\d{4}$" placeholder="Phone Number (xxx-xxx-xxxx)" data-parsley-type="digits" data-parsley-length="[10, 10]" required="">
+
+					<div class="invalid-form-error-message"></div>
 					<input class="signUp" type="submit" value="Sign Up">
 			</form>
 		</div>
 	</div>
+
 </body>
+
+
 <!-- Live Reload -->
 <script type="text/javascript" src="http://localhost:35729/livereload.js"></script>
 <script type="text/javascript" src="assets/js/login.js"></script>
 </html>
+

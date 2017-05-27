@@ -1,0 +1,27 @@
+
+.navbar {
+    background-color: lightcoral;
+}
+
+
+#textlogo {
+    padding:0.5em;
+    color: black;
+    font-weight: bold;
+    font-size: large;
+}
+
+.input-group {
+    margin-top: 50px;
+    margin-left: 30px;
+ }
+
+#go {
+    margin-top: 50px;
+
+}
+
+#categories {
+    padding-left: 2em;
+    background-color: lightcoral;
+}

@@ -32,6 +32,8 @@ $(document).on("focusout" , ".email" , function () {
              $(this).attr('placeholder' , "Email");
          }
    });
+
+
 // Removes Place holder on click confirm Password
 $(document).on("focus" , ".confirmPass" , function () {
 
@@ -63,6 +65,6 @@ $(document).on("focus" , ".phone" , function () {
 $(document).on("focusout" , ".phone" , function () {
 
          if($(this).val() == ''){
-             $(this).attr('placeholder' , "Phone");
+             $(this).attr('placeholder' , "Phone Number (xxx-xxx-xxxx)");
          }
    });

@@ -6,6 +6,7 @@ module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define("User", {
         username: {
             type: DataTypes.STRING,
+            allowNull: false,
             required: true,
             unique: true,
             validate: {
@@ -32,22 +33,23 @@ module.exports = function(sequelize, DataTypes) {
                 msg: "Please provide a valid email address"
             }
         },
-        phone: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isNumeric: true,
-                len: [10]
-            }
-        },
         zipCode: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 isNumeric: true,
                 len: [5]
+                }
+            },
+        phone: {
+            type: DataTypes.CHAR,
+            allowNull: false,
+            validate: {
+                isNumeric: true,
+                len: [10]
             }
         }
+
     },
 
         {

@@ -12,7 +12,7 @@ module.exports = function (app, passport) {
 
     // //Process Signup
     app.post("/signup", passport.authenticate ('local-signup', {
-        successRedirect: '/profile',
+        successRedirect: '/member',
         failureRedirect: '/signup',
         failureFlash: true
     }));
@@ -22,10 +22,12 @@ module.exports = function (app, passport) {
 
         console.log("POST USER", req.user.id);
 
-        console.log("REQ", req.body);
+        console.log("POST Title", req.body.title);
+
+        console.log("Description", req.body);
 
         var newPost = {
-            title: "test",
+            title: req.body.title,
             description: req.body.description,
             UserId: req.user.id
         };

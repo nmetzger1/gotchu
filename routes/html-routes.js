@@ -19,7 +19,7 @@ module.exports = function (app, passport) {
         var options = {
             user: req.user
         };
-        res.sendFile(path.join (__dirname + "/../public/loggedIn.html"), options);
+        res.sendFile(path.join (__dirname + "/../public/member.html"), options);
     });
 
     //MEMBER PAGE
