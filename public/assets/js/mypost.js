@@ -27,7 +27,7 @@ $(document).ready(function () {
 
     // Function for retrieving posts and getting them ready to be rendered to the page
     function getPosts() {
-        $.get('/api/posts', function (data) {
+        $.get('/api/posts/', function (data) {
             var rowsToAdd = [];
             for (var i = 0; i < data.length; i++) {
                 rowsToAdd.push(createPostRow(data[i]));
@@ -48,30 +48,30 @@ $(document).ready(function () {
 
     }
 
-    // // Gets post data for a post if editing
-    // function getPostData(id) {
-    //     $.get("/api/posts/" + id, function (data) {
-    //         if (data) {
-    //             postTitle.val(data.title);
-    //             postBody.val(data.body);
-    //             postCategorySelect.val(data.category);
-    //
-    //             updating = true;
-    //         }
-    //     });
-    // }
-    //
-    // // Update a given post, bring user to the member page when done
-    // function editPost(post) {
-    //     $.ajax({
-    //         method: "PUT",
-    //         url: "/api/posts",
-    //         data: post
-    //     })
-    //         .done(function () {
-    //             window.location.href = "/member";
-    //         });
-    // }
+    // Gets post data for a post if editing
+    function getPostData(id) {
+        $.get("/api/posts/" + id, function (data) {
+            if (data) {
+                postTitle.val(data.title);
+                postBody.val(data.body);
+                postCategorySelect.val(data.category);
+
+                updating = true;
+            }
+        });
+    }
+
+    // Update a given post, bring user to the member page when done
+    function editPost(post) {
+        $.ajax({
+            method: "PUT",
+            url: "/api/posts",
+            data: post
+        })
+            .done(function () {
+                window.location.href = "/member";
+            });
+    }
 
 
     // Function for handling what happens when the remove button is clicked
