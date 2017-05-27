@@ -42,11 +42,10 @@ module.exports = function(sequelize, DataTypes) {
                 }
             },
         phone: {
-            type: DataTypes.CHAR,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                isNumeric: true,
-                len: [10]
+                is: ["^[0-9]+$", "i"]
             }
         }
 

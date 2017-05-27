@@ -14,16 +14,17 @@ module.exports = function (app, passport) {
     });
 
     //PROFILE PAGE
-    app.get("/profile", isLoggedIn, function (req, res) {
+    app.get("/member", isLoggedIn, function (req, res) {
 
         var options = {
             user: req.user
+
         };
         res.sendFile(path.join (__dirname + "/../public/member.html"), options);
     });
 
     //MEMBER PAGE
-    app.get("/member", isLoggedIn, function (req, res) {
+    app.post("/member", isLoggedIn, function (req, res) {
 
         var options = {
             user: req.user

@@ -25,3 +25,15 @@
     padding-left: 2em;
     background-color: lightcoral;
 }
+
+.post-container {
+    margin-top: 50px;
+}
+
+.top-30 {
+    margin-top: 30px;
+}
+
+#logoutBtn {
+    margin-left: 20px;
+}
