@@ -37,3 +37,19 @@
 #logoutBtn {
     margin-left: 20px;
 }
+
+.post-img {
+    width: 300px;
+}
+
+p {
+    width: 300px;
+}
+
+.postings {
+    display: inline-block;
+    background-color: ghostwhite;
+    padding: .5%;
+    margin: 1%;
+    text-align: left;
+}
