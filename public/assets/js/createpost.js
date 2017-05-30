@@ -33,6 +33,7 @@ $(document).ready(function () {
 
         submitPost(newPost);
 
+
     });
 
     // Submits a new post and bring user to member page upon completion

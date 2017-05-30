@@ -1,62 +1,75 @@
-/*.navBar {*/
-    /*position: relative;*/
-/*}*/
-/*.navHeader {*/
-    /*background-color: #849AAC;*/
-/*}*/
+.navBar {
+    position: relative;
+}
+
+.navHeader {
+    background-color: #849AAC;
+}
+
+.logo {
+    color: black;
+    margin-top: 10px;
+    position: relative;
+    top: 10px;
+    font-size: 30px;
+    padding-right: 50px;
+    padding-left: 50px;
+    width: 200px;
+}
+
+.searchRight {
+    margin-left: -32px;
+}
+
+.input-group input {
+     background-color: hsla(0, 0%, 100%, .2);
+     
+}
+
+ .input-group {
+     position: relative;
+     top: 10px;
+     
+}
+
+ #textlogo {
+     padding: 0.5em;
+     color: black;
+     font-weight: bold;
+     font-size: large;
+     
+}
+
+ .input-group {
+     margin-top: 50px;
+     margin-left: 30px;
+     
+}
+
+ #go {
+     margin-top: 50px;
+     
+}
+
+ #categories {
+     padding-left: 2em;
+     background-color: lightcoral;
+     
+}
+
+ .post-container {
+     margin-top: 50px;
+     
+}
+
+ .top-30 {
+     margin-top: 30px;
+     
+}
+
+ #logoutBtn {
+     margin-left: 20px;
+     
+}
 
 
-/*.logo {*/
-    /*color: black;*/
-    /*margin-top:10px;*/
-    /*position: relative;*/
-    /*top: 10px;*/
-    /*font-size: 30px;*/
-    /*padding-right: 50px;*/
-    /*padding-left: 50px;*/
-    /*width: 200px;*/
-/*}*/
-
-/*.searchRight {*/
-    /*margin-left: -32px;*/
-/*}*/
-
-/*!*.input-group input{*!*/
-    /*!*background-color: hsla(0,0%,100%,.2);*!*/
-/*!*}*!*/
-/*!*.input-group {*!*/
-    /*!*position: relative;*!*/
-    /*!*top: 10px;*!*/
-/*!*}*!*/
-/*!*#textlogo {*!*/
-    /*!*padding:0.5em;*!*/
-    /*!*color: black;*!*/
-    /*!*font-weight: bold;*!*/
-    /*!*font-size: large;*!*/
-/*!*}*!*/
-
-/*!*!*.input-group {*!*!*/
-    /*!*!*margin-top: 50px;*!*!*/
-    /*!*!*margin-left: 30px;*!*!*/
- /*!*!*}*!*!*/
-
-/*!*#go {*!*/
-    /*!*margin-top: 50px;*!*/
-/*!*}*!*/
-
-/*!*#categories {*!*/
-    /*!*padding-left: 2em;*!*/
-    /*!*background-color: lightcoral;*!*/
-/*!*}*!*/
-
-/*!*.post-container {*!*/
-    /*!*margin-top: 50px;*!*/
-/*!*}*!*/
-
-/*!*.top-30 {*!*/
-    /*!*margin-top: 30px;*!*/
-/*!*}*!*/
-
-/*!*#logoutBtn {*!*/
-    /*!*margin-left: 20px;*!*/
-/*!*}*!*/
