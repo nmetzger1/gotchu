@@ -19,83 +19,106 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-</head>
 <meta charset="utf-8">
 <title>Member</title>
 </head>
 
 <body>
 
-<nav class="navbar navbar-default">
-    <div class="continer-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <img id="logo" class="img-responsive" src="assets/images/team.png" alt="teamImage" width="100px">
-            <h1 id="textlogo">GOTCHU</h1>
-        </div>
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <form class="form-inline" name="search" action="/search/" method="get">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-                    <input type="text" class="form-control" placeholder="Search" id="search" value=""/>
-
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i> </span>
-                    <input type="text" class="form-control" placeholder="Enter a Location" id="location" value="32811"/>
-                </div>
-                    <button type="submit" class="btn btn-default" id="go">Go</button>
-
-            </form>
-
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                        <button data-toggle="modal" href="#createPost" class="btn btn-success navbar-btn">Create Post</button>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Member<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="myposts.html">My Posts</a></li>
-                        <li role="separator" class="divider"></li>
-                        <form action="/logout">
-                            <button type="submit" class="btn btn-danger" id="logoutBtn">Logout</button>
-                        </form>
-
-                    </ul>
-                </li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
-
-
-
-<div class="wrapper">
-    <h1>Recent posts near you</h1>
-    <!-- Header -->
+<!--Create Post and Members Post drop down-->
+<div class="wrapperHead">
     <div class="headerMemb img-responsive">
-        <!--Transparent Layer-->
-        < class="layer">
-        <div class="row">
-            <h2>Categories</h2>
-            <div class="col-md-4">
-                <ul class="nav nav-pills nav-stacked" id="categories">
-                    <li><a href="">All</a></li>
-                    <li><a href="">House</a></li>
-                    <li><a href="">Car</a></li>
-                    <li><a href="">Pets</a></li>
-                    <li><a href="">Personal</a></li>
-                    <li><a href="">Other Services</a></li>
+        <div class="navMem">
+            <div class="navTabs">
+                <h2>GotChu</h2>
+                <img class="memLogo" src="assets/images/team.png">
+                <!--Search & Location-->
+                <form class="form-inline" name="search" action="/post/create" method="post">
+                    <div class="input-group memSearch">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                        <!--Search Input    -->
+                        <input type="text" class="inputBg form-control" placeholder="Search" id="search" value=""/>
+                        <!--Location Input-->
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i> </span>
+                        <input type="text" class="inputBg form-control" placeholder="Enter a Location" id="location" value="Location"/>
+                        <button type="submit" class="btnSubmit btn btn-default" id="go">Go</button>
+                    </div>
+                </form>
+                <!--Member post Drop down-->
+                <ul class=" creatPostDropDown nav navbar-nav ">
+                    <li>
+                        <button data-toggle="modal" href="#createPost" class="postBtn btn btn-default navbar-btn">Create Post</button>
+                        <!--<button data-toggle="modal" href="#createPost" class="btn btn-success navbar-btn">Create Post</button>-->
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle memDropDown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Member<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="myposts.html">My Posts</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Sign Out</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
-
         </div>
     </div>
 </div>
+
+
+<!--Post Section-->
+<div class="postBody">
+    <div class="category">
+        <div class="categoryHead">
+            <div class="glyphicon glyphicon-tag"></div>
+            Categories
+        </div>
+        <div class="categoryBody">
+            <ul class="categoryChoices">
+                <li><a class="catLink" data-type="all" href="" >All</a></li>
+                <li><a class="catLink" data-type="car" href="" >Car</a></li>
+                <li><a class="catLink" data-type="house"  href="" >House</a></li>
+                <li><a class="catLink" data-type="pet" href="" >Pets</a></li>
+                <li><a class="catLink" data-type="other" href="" >Other Services</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--All Items-->
+    <div class="userPostSection all">
+        <!--<div class="itemContainer">-->
+            <!--<div class="itemPic"></div>-->
+            <!--<div class="itemInfo">-->
+                <!--<div class="itemDescription"></div>-->
+                <!--<div class="itemPrice"></div>-->
+                <!--<div class="itemLocation"></div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    </div>
+
+    <div class="userPostSection car"></div>
+
+    <div class="userPostSection house"></div>
+
+    <div class="userPostSection pet"></div>
+
+    <div class="userPostSection other"></div>
+
+    <!--modal-->
+    <div class="modal fade" id="createPost">
+        <div class="modal-dialog">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="panel-title">Create a new post</h4>
+                </div>
+                <form id="newPost">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <input class="form-control" id="title" placeholder="Post Title" type="text" required/>
+                            </div>
+
 
 <br><br>
 
@@ -179,36 +202,36 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <input class="form-control" id="title" placeholder="Post Title" type="text" required/>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <textarea style="resize:vertical;" class="form-control" placeholder="Post Description" rows="6" id="body" name="body" required></textarea>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <textarea style="resize:vertical;" class="form-control" placeholder="Post Description" rows="6" id="body"required></textarea>
-                        </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <br>
+                        <label for="category">Select Category</label>
+                        <br>
+                        <select class="form-control" id="category">
+                            <option value="Home">Home</option>
+                            <option value="Cars">Cars</option>
+                            <option value="Pets">Pets</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Other Services">Other Services</option>
+                        </select>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <br>
-                            <label for="category">Select Category</label>
-                            <br>
-                            <select class="form-control" id="category">
-                                <option value="Home">Home</option>
-                                <option value="Cars">Cars</option>
-                                <option value="Pets">Pets</option>
-                                <option value="Personal">Personal</option>
-                                <option value="Other Services">Other Services</option>
-                            </select>
-                        </div>
+                    <div class="panel-footer">
+                        <button type="submit" class="btn btn-success">Create Post</button>
+                        <button type="reset" class="btn btn-danger">Clear</button>
+                        <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
                     </div>
-                </div>
-                <div class="panel-footer">
-                    <button type="submit" class="btn btn-success">Create Post</button>
-                    <button type="reset" class="btn btn-danger">Clear</button>
-                    <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
+
 </div>
 
 
@@ -238,5 +261,7 @@
     <script src="assets/js/createpost.js"></script>
 
 
+
+    <script src="assets/js/populateTest.js" ></script>
 </body>
 </html>

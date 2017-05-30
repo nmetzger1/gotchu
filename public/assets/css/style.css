@@ -1,55 +1,75 @@
-
-.navbar {
-    background-color: lightcoral;
+.navBar {
+    position: relative;
 }
 
+.navHeader {
+    background-color: #849AAC;
+}
 
-#textlogo {
-    padding:0.5em;
+.logo {
     color: black;
-    font-weight: bold;
-    font-size: large;
+    margin-top: 10px;
+    position: relative;
+    top: 10px;
+    font-size: 30px;
+    padding-right: 50px;
+    padding-left: 50px;
+    width: 200px;
 }
 
-.input-group {
-    margin-top: 50px;
-    margin-left: 30px;
- }
-
-#go {
-    margin-top: 50px;
-
+.searchRight {
+    margin-left: -32px;
 }
 
-#categories {
-    padding-left: 2em;
-    background-color: lightcoral;
+.input-group input {
+     background-color: hsla(0, 0%, 100%, .2);
+     
 }
 
-.post-container {
-    margin-top: 50px;
+ .input-group {
+     position: relative;
+     top: 10px;
+     
 }
 
-.top-30 {
-    margin-top: 30px;
+ #textlogo {
+     padding: 0.5em;
+     color: black;
+     font-weight: bold;
+     font-size: large;
+     
 }
 
-#logoutBtn {
-    margin-left: 20px;
+ .input-group {
+     margin-top: 50px;
+     margin-left: 30px;
+     
 }
 
-.post-img {
-    width: 300px;
+ #go {
+     margin-top: 50px;
+     
 }
 
-p {
-    width: 300px;
+ #categories {
+     padding-left: 2em;
+     background-color: lightcoral;
+     
 }
 
-.postings {
-    display: inline-block;
-    background-color: ghostwhite;
-    padding: .5%;
-    margin: 1%;
-    text-align: left;
+ .post-container {
+     margin-top: 50px;
+     
 }
+
+ .top-30 {
+     margin-top: 30px;
+     
+}
+
+ #logoutBtn {
+     margin-left: 20px;
+     
+}
+
+

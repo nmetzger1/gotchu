@@ -31,7 +31,8 @@ $(document).ready(function () {
         };
         console.log("New post: " + newPost);
 
-            submitPost(newPost);
+        submitPost(newPost);
+
 
     });
 

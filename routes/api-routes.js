@@ -50,6 +50,19 @@ module.exports = function (app, passport) {
     // });
     //
     // // Post route for saving a new post
+
+    app.post("/api/posts", function (req, res) {
+        console.log(req.body);
+        db.Post.create({
+            title: req.body.title,
+            body: req.body.body,
+            category: req.body.category,
+            UserId: req.user.id
+        })
+            .then(function (dbPost) {
+                res.json(dbPost);
+            });
+    });
     // app.post("/api/posts", function (req, res) {
     //     console.log(req.body);
     //     db.Post.create({
@@ -62,6 +75,7 @@ module.exports = function (app, passport) {
     //             res.json(dbPost);
     //         });
     // });
+
     //
     // // Delete Route for deleting posts
     // app.delete("/api/posts/:id", function (req, res) {
