@@ -11,14 +11,16 @@ $(document).ready(function () {
     // Function for creating a new list row for posts
     function createPostDiv(postData) {
         var Post = $(".postings");
-            Post.data("posts", postData);
-            console.log(postData);
-            $(".post-title").append("<p>" + postData.title + "</p>");
-            $(".post-body").append("<p>" + postData.body + "</p>");
-            $(".post-category").append("<p>" + postData.category + "</p>");
-            return Post;
+        Post.data("posts", postData);
+        console.log("Post data: " + postData);
+        $(".post-title").append("<p>" + postData.title + "</p>");
+        $(".post-body").append("<p>" + postData.body + "</p>");
+        $(".post-category").append("<p>" + postData.category + "</p>");
+        return Post;
 
     }
+
+
 
 
     // Function for retrieving posts and getting them ready to be rendered to the page
