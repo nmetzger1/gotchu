@@ -1,75 +1,11 @@
   div.headerMemb {
     height: 30em;
     min-width: 100%;
-    background-image: url('../images/mem3.jpg');
+    background: linear-gradient(
+                    rgba(0, 0, 0, 0.2),
+                    rgba(0, 0, 0, 0.2)
+    ),
+    url('../images/mem5.jpg');
     background-size: cover;
-    position: relative;
-    nav.layer {
-      background-color: $layerColor;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-    div.createPostHead {
-      //border: 2px solid blue;
-      height: 100%;
-      width: 90%;
-      margin: 0 auto;
-      position: relative;
-      h2 {
-        color: #fff;
-        font-size: 27px;
-        margin-left: 20%;
-        padding-top: 3%;
-      }
-      div.navHeadSection {
-        position: absolute;
-        bottom: 50px;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
-        width: 60%;
-        //border: 2px solid #f45;
-        ul {
-          text-align: center;
-          li {
-            margin: 2% 5% 2% 5%;
-            font-size: 20px;
-            display: inline-block;
-            a {
-              color: $headerNavLink;
-            }
-          }
-        }
-        form {
-          input.headerText {
-            border-style: none;
-            border-radius: 20px;
-            color: #ffff;
-            font-size: 20px;
-            height: 7em;
-            opacity: 0.6;
-            margin: 0 auto;
-            width: 100%;
-          }
-
-          input.headerSubmit {
-            border-radius: 20px;
-            border-style: none;
-            background-color: $navBackgroundColor;
-            color: #fff;
-            margin-top: 10px;
-            height: 3em;
-            width: 100px;
-            float: right;
-            font-size: 1em;
-          }
-        }
-      }
-    }
   }
-
-
 
