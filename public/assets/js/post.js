@@ -13,9 +13,11 @@ $(document).ready(function () {
             var Post = $("<div class='postings'>");
             Post.data("posts", postData);
             console.log("posts", postData);
+            Post.append('<img src="https://s-media-cache-ak0.pinimg.com/originals/28/81/4d/28814dbf59005e2f4953ee62f76df0b6.jpg" width="250px">');
             Post.append("<p>" + postData.title + "</p>");
-            Post.append("<p>" + postData.body + "</p>");
+            // Post.append("<p>" + postData.body + "</p>");
             Post.append("<p>" + postData.category + "</p>");
+            // Post.append("<p>" + distance.text  + "</p>");
             Post.append('<button data-toggle="modal" href="#postInfo" >Details</button>');
             // var button = $('<button type="button" class="btn btn-default comment-btn" id="message" aria-label="Left Align"></button>');
             // Post.append(button);
