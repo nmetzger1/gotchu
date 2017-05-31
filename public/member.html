@@ -33,14 +33,15 @@
                 <h2>GotChu</h2>
                 <img class="memLogo" src="assets/images/team.png">
                 <!--Search & Location-->
-                <form class="form-inline" name="search" action="/post/create" method="post">
+                <!--<form class="form-inline" name="search" action="/post/create" method="post">-->
+                <form class="form-inline">
                     <div class="input-group memSearch">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
                         <!--Search Input    -->
                         <input type="text" class="inputBg form-control" placeholder="Search" id="search" value=""/>
                         <!--Location Input-->
                         <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i> </span>
-                        <input type="text" class="inputBg form-control" placeholder="Enter a Location" id="location" value="Location"/>
+                        <input type="text" class="inputBg form-control" placeholder="Enter a Location" id="location" value=""/>
                         <button type="submit" class="btnSubmit btn btn-default" id="go">Go</button>
                     </div>
                 </form>
@@ -71,7 +72,7 @@
 </div>
 <div class="userPostSection">
     <div class="categorySection">
-    <!--Category-->
+        <!--Category-->
         <div class="category">
             <div class="categoryHead">
                 <div class="glyphicon glyphicon-tag"></div>
@@ -87,8 +88,8 @@
                 </ul>
             </div>
         </div>
-
     </div>
+<!--All Posts-->
     <div class="post-area"></div>
 </div>
 
@@ -161,6 +162,7 @@
 <script src="assets/js/post.js"></script>
 <script src="assets/js/createpost.js"></script>
 <script src="assets/js/populateTest.js" ></script>
+<script src="assets/js/filter.js" ></script>
 
 
 </body>
