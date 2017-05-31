@@ -25,6 +25,53 @@ module.exports = function (app, passport) {
             });
     });
 
+    app.get("/api/posts/category/:category", function (req, res) {
+        db.Post.findAll({
+            where: {
+                category: req.params.category
+            }
+        }).then(function (dbPost) {
+            res.json(dbPost);
+        });
+    });
+
+    app.get("/api/userRep/", function (req, res) {
+
+        db.Helper.findAll({
+            where: {
+                UserId: req.user.id
+            }
+        }).then(function (helperData) {
+
+            var helperRep = 0;
+
+            //Get total Reputation from Helper table
+            for(var i = 0; i < helperData.length; i++){
+                helperRep += parseInt(helperData[i].ratings);
+            }
+
+            //Subtract number of open posts
+            db.Post.findAndCountAll({
+                where: {
+                    UserId: req.user.id,
+                    isActive: 1
+                }
+            }).then(function (postCount) {
+
+                var totalRep = helperRep - postCount.count;
+
+                if(totalRep > 0){
+                    res.send(totalRep.toString());
+                }
+                else {
+                    res.send("0");
+                }
+
+            })
+        })
+
+    });
+
     // // Get route for returning posts of a specific category
     // app.get("/api/posts/category/:category", function (req, res) {
     //     db.Post.findAll({
@@ -49,7 +96,8 @@ module.exports = function (app, passport) {
     //         });
     // });
     //
-    // Post route for saving a new post
+    // // Post route for saving a new post
+
     app.post("/api/posts", function (req, res) {
         console.log(req.body);
         db.Post.create({
@@ -62,7 +110,20 @@ module.exports = function (app, passport) {
                 res.json(dbPost);
             });
     });
+    // app.post("/api/posts", function (req, res) {
+    //     console.log(req.body);
+    //     db.Post.create({
+    //         title: req.body.title,
+    //         body: req.body.body,
+    //         category: req.body.category,
+    //         UserId: req.user.id
+    //     })
+    //         .then(function (dbPost) {
+    //             res.json(dbPost);
+    //         });
+    // });
 
+    //
     // // Delete Route for deleting posts
     // app.delete("/api/posts/:id", function (req, res) {
     //     db.Post.destroy({

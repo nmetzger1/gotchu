@@ -19,13 +19,16 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-</head>
-<meta charset="utf-8">
-<title>Member</title>
+    <meta charset="utf-8">
+    <title>Member</title>
 </head>
 
 <body>
 
+<<<<<<< HEAD
+=======
+<!--Create Post and Members Post drop down-->
+>>>>>>> 830fe95a2571caa5a9170dcba9f7367c1ccd62ac
 <div class="wrapperHead">
     <div class="headerMemb img-responsive">
         <div class="navMem">
@@ -63,6 +66,7 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 
 
 <div class="category">
@@ -136,8 +140,135 @@
         </div>
     </div>
 </div>
+=======
 
 
+<!--Post Section-->
+<div class="postBody">
+    <div class="category">
+        <div class="categoryHead">
+            <div class="glyphicon glyphicon-tag"></div>
+            Categories
+        </div>
+        <div class="categoryBody">
+            <ul class="categoryChoices">
+                <li><a class="catLink" data-type="all" href="" >All</a></li>
+                <li><a class="catLink" data-type="car" href="" >Car</a></li>
+                <li><a class="catLink" data-type="house"  href="" >House</a></li>
+                <li><a class="catLink" data-type="pet" href="" >Pets</a></li>
+                <li><a class="catLink" data-type="other" href="" >Other Services</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--All Items-->
+    <div class="userPostSection all">
+        <!--<div class="itemContainer">-->
+        <!--<div class="itemPic"></div>-->
+        <!--<div class="itemInfo">-->
+        <!--<div class="itemDescription"></div>-->
+        <!--<div class="itemPrice"></div>-->
+        <!--<div class="itemLocation"></div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+    </div>
+
+    <div class="userPostSection car"></div>
+
+    <div class="userPostSection house"></div>
+
+    <div class="userPostSection pet"></div>
+
+    <div class="userPostSection other"></div>
+
+    <!--modal-->
+    <div class="modal fade" id="createPost">
+        <div class="modal-dialog">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="panel-title">Create a new post</h4>
+                </div>
+                <form id="newPost">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <input class="form-control" id="title" placeholder="Post Title" type="text" required/>
+                            </div>
+
+
+                            <br><br>
+
+                            <div class="container-fluid">
+                                <!--Postings-->
+                                <div class="post-area">
+                                    <div class="postings">
+                                        <!--<img src="http://americanlawncareidaho.com/wp-content/uploads/2013/11/lawncare-boise.jpg" class="post-img" alt="">-->
+                                        <p class="post-title"></p><br>
+                                        <p class="post-body"></p><br>
+                                        <p class="post-category"></p><br>
+                                        <span class="buttons-section">
+                        <button data-toggle="modal" href="#postInfo" >Love to help</button>
+                        <button type="button" class="btn btn-default comment-btn" id="message" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                        </button>
+                    </span>
+                                    </div>
+
+                                    <!--<div class="postings">-->
+                                    <!--&lt;!&ndash;<img src="http://americanlawncareidaho.com/wp-content/uploads/2013/11/lawncare-boise.jpg" class="post-img" alt="">&ndash;&gt;-->
+                                    <!--<p class="post-title">Post Title</p>-->
+                                    <!--<p class="post-body">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has</p>-->
+                                    <!--<p class="post-category">-->
+                                    <!--<span class="buttons-section">-->
+                                    <!--<button data-toggle="modal" href="#postInfo" >Love to help</button>-->
+                                    <!--<button type="button" class="btn btn-default comment-btn" id="message" aria-label="Left Align">-->
+                                    <!--<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>-->
+                                    <!--</button>-->
+                                    <!--</span>-->
+                                    <!--</p>-->
+                                    <!--</div>-->
+
+                                </div>
+
+                                <!-- Comments Modal -->
+                                <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="modalTitle">User Comments</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="comment-div"></div>
+                                                <hr>
+                                                <div class="comment-form">
+                                                    <form id="submit-comment" method="post" action="/comments">
+                                                        <input type="hidden" id="articleId">
+                                                        <p><label for="body">Leave a Comment</label></p>
+                                                        <textarea name="body" form="submit-comment"></textarea>
+>>>>>>> 830fe95a2571caa5a9170dcba9f7367c1ccd62ac
+
+                                                        <div class="form-group">
+                                                            <label for="user">Enter Your Name</label>
+                                                            <input type="text" id="user" name="user">
+                                                        </div>
+                                                        <button type="submit" class="btn btn-default" id="submit-btn">Submit</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END of Comments Modal -->
+
+<<<<<<< HEAD
 <div class="modal fade" id="postInfo">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -158,7 +289,81 @@
 
 <script src="assets/js/post.js"></script>
 <script src="assets/js/createpost.js"></script>
+=======
+                                <!-- Create Post Modal-->
+                                <div class="modal fade" id="createPost">
+                                    <div class="modal-dialog">
+                                        <div class="panel panel-primary">
+                                            <div class="panel-heading">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                <h4 class="panel-title">Create a new post</h4>
+                                            </div>
+                                            <form id="newPost">
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                                            <input class="form-control" id="title" placeholder="Post Title" type="text" required/>
+
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                                <textarea style="resize:vertical;" class="form-control" placeholder="Post Description" rows="6" id="body" name="body" required></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <br>
+                                                        <label for="category">Select Category</label>
+                                                        <br>
+                                                        <select class="form-control" id="category">
+                                                            <option value="Home">Home</option>
+                                                            <option value="Cars">Cars</option>
+                                                            <option value="Pets">Pets</option>
+                                                            <option value="Personal">Personal</option>
+                                                            <option value="Other Services">Other Services</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="panel-footer">
+                                                        <button type="submit" class="btn btn-success">Create Post</button>
+                                                        <button type="reset" class="btn btn-danger">Clear</button>
+                                                        <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
+                                                    </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
 
 
+                            <div class="modal fade" id="postInfo">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title">Details</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has </p>
+                                            <!--Request to help-->
+                                            <button class="btn-danger">
+                                                Love to help
+                                            </button>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+
+                            <script src="assets/js/post.js"></script>
+                            <script src="assets/js/createpost.js"></script>
+
+>>>>>>> 830fe95a2571caa5a9170dcba9f7367c1ccd62ac
+
+
+                            <script src="assets/js/populateTest.js" ></script>
 </body>
 </html>

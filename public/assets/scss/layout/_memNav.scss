@@ -2,6 +2,7 @@
   height: 75px;
   width: 100%;
   position: fixed;
+<<<<<<< HEAD
   .navTabs {
     height: 60%;
     width: 100%;
@@ -22,6 +23,28 @@
   height:50px;
   position:relative;
   top: 10px;
+=======
+    .navTabs {
+        height: 60%;
+        width: 100%;
+        position:relative
+    }
+        h2 {
+           display: inline-block;
+           color: #fff;
+           font-size: 37px;
+           margin: 16px 0 0 30px;
+        }
+}
+.navbar-btn {
+    margin: 0;
+}
+.memLogo {
+    width:50px;
+    height:50px;
+    position:relative;
+    top: 10px;
+>>>>>>> 830fe95a2571caa5a9170dcba9f7367c1ccd62ac
 }
 .creatPostDropDown {
   margin-top: 10px;
@@ -30,6 +53,7 @@
   top: 0;
 }
 #go {
+<<<<<<< HEAD
   margin:0;
 }
 .postBtn {
@@ -70,3 +94,45 @@
 form {
   display: inline;
 }
+=======
+    margin:0;
+}
+.postBtn {
+    background:transparent;
+    border: none;
+    color: white;
+    float:right;
+    font-size: 1em;
+    margin-top: 7px
+}
+    .memDropDown {
+    background:transparent;
+    color: white;
+    margin: 0 30px 0 30px;
+    padding:22px;
+    text-align: center;
+}
+
+.inputBg {
+    background: rgba(101,98,103, 0.7);
+    padding-right: 15em;
+}
+
+.memSearch {
+    margin: -10px 0 0 67px;
+    .input-group-addon {
+        background: rgba(101,98,103,0.7);
+        color: white;
+    }
+}
+
+.btnSubmit {
+    position: absolute;
+    background: rgba(101,98,103,0.7);
+    color: white;
+    margin-top: 20px;
+}
+ form {
+    display: inline;
+ }
+>>>>>>> 830fe95a2571caa5a9170dcba9f7367c1ccd62ac
