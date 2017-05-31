@@ -3,19 +3,23 @@
 $(document).ready(function () {
     //Getting references to the post input and post container
 
-    var postDiv = $(".post-area")
+    // var postDiv = $(".post-area")
 
     // Getting the initial list of Posts
     getPosts();
 
-    // Function for creating a new list row for posts
+    // // Function for creating a new list row for posts
     function createPostDiv(postData) {
-        var Post = $(".postings");
-        Post.data("posts", postData);
-        console.log("Post data: " + postData);
-        $(".post-title").append("<p>" + postData.title + "</p>");
-        $(".post-body").append("<p>" + postData.body + "</p>");
-        $(".post-category").append("<p>" + postData.category + "</p>");
+            var Post = $("<div class='postings'>");
+            Post.data("posts", postData);
+            console.log("posts", postData);
+            Post.append("<p>" + postData.title + "</p>");
+            Post.append("<p>" + postData.body + "</p>");
+            Post.append("<p>" + postData.category + "</p>");
+            Post.append('<button data-toggle="modal" href="#postInfo" >Details</button>');
+            // var button = $('<button type="button" class="btn btn-default comment-btn" id="message" aria-label="Left Align"></button>');
+            // Post.append(button);
+            // button.append('<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>');
         return Post;
 
     }
@@ -37,11 +41,9 @@ $(document).ready(function () {
 
     // Function for rendering list of posts to the page
     function renderPost(posts) {
-        postDiv.children().not(":last").remove();
-        // postContainer.children(".alert").remove();
         if (posts.length) {
             console.log(posts);
-            postDiv.prepend(posts);
+            $(".post-area").prepend(posts);
         }
 
     }

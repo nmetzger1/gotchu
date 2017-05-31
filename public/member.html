@@ -26,145 +26,71 @@
 
 <body>
 
-<nav class="navbar navbar-default">
-    <div class="continer-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <img id="logo" class="img-responsive" src="assets/images/team.png" alt="teamImage" width="100px">
-            <h1 id="textlogo">GOTCHU</h1>
-        </div>
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <form class="form-inline" name="search" action="/search/" method="get">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-                    <input type="text" class="form-control" placeholder="Search" id="search" value=""/>
-
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i> </span>
-                    <input type="text" class="form-control" placeholder="Enter a Location" id="location" value="32811"/>
-                </div>
-                    <button type="submit" class="btn btn-default" id="go">Go</button>
-
-            </form>
-
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                        <button data-toggle="modal" href="#createPost" class="btn btn-success navbar-btn">Create Post</button>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Member<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="myposts.html">My Posts</a></li>
-                        <li role="separator" class="divider"></li>
-                        <form action="/logout">
-                            <button type="submit" class="btn btn-danger" id="logoutBtn">Logout</button>
-                        </form>
-
-                    </ul>
-                </li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
-
-
-
-<div class="wrapper">
-    <h1>Recent posts near you</h1>
-    <!-- Header -->
+<div class="wrapperHead">
     <div class="headerMemb img-responsive">
-        <!--Transparent Layer-->
-        < class="layer">
-        <div class="row">
-            <h2>Categories</h2>
-            <div class="col-md-4">
-                <ul class="nav nav-pills nav-stacked" id="categories">
-                    <li><a href="">All</a></li>
-                    <li><a href="">House</a></li>
-                    <li><a href="">Car</a></li>
-                    <li><a href="">Pets</a></li>
-                    <li><a href="">Personal</a></li>
-                    <li><a href="">Other Services</a></li>
+        <div class="navMem">
+            <div class="navTabs">
+                <h2>GotChu</h2>
+                <img class="memLogo" src="assets/images/team.png">
+                <!--Search & Location-->
+                <form class="form-inline" name="search" action="/post/create" method="post">
+                    <div class="input-group memSearch">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                        <!--Search Input    -->
+                        <input type="text" class="inputBg form-control" placeholder="Search" id="search" value=""/>
+                        <!--Location Input-->
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i> </span>
+                        <input type="text" class="inputBg form-control" placeholder="Enter a Location" id="location" value="Location"/>
+                        <button type="submit" class="btnSubmit btn btn-default" id="go">Go</button>
+                    </div>
+                </form>
+                <!--Member post Drop down-->
+                <ul class=" creatPostDropDown nav navbar-nav ">
+                    <li>
+                        <button data-toggle="modal" href="#createPost" class="postBtn btn btn-default navbar-btn">Create Post</button>
+                        <!--<button data-toggle="modal" href="#createPost" class="btn btn-success navbar-btn">Create Post</button>-->
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle memDropDown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Member<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="myposts.html">My Posts</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Sign Out</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
-
         </div>
+    </div>
+</div>
+
+
+<div class="category">
+    <div class="categoryHead">
+        <div class="glyphicon glyphicon-tag"></div>
+        Categories
+    </div>
+    <div class="categoryBody">
+        <ul class="categoryChoices">
+            <li><a class="catLink" data-type="all" href="">All</a></li>
+            <li><a class="catLink" data-type="car" href="">Car</a></li>
+            <li><a class="catLink" data-type="house" href="">House</a></li>
+            <li><a class="catLink" data-type="pet" href="">Pets</a></li>
+            <li><a class="catLink" data-type="other" href="">Other Services</a></li>
+        </ul>
     </div>
 </div>
 
 <br><br>
 
-<div class="container-fluid">
-<!--Postings-->
-    <div class="post-area">
-        <div class="postings">
-            <!--<img src="http://americanlawncareidaho.com/wp-content/uploads/2013/11/lawncare-boise.jpg" class="post-img" alt="">-->
-            <p class="post-title"></p><br>
-            <p class="post-body"></p><br>
-            <p class="post-category"></p><br>
-                    <span class="buttons-section">
-                        <button data-toggle="modal" href="#postInfo" >Love to help</button>
-                        <button type="button" class="btn btn-default comment-btn" id="message" aria-label="Left Align">
-                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-                        </button>
-                    </span>
-        </div>
+<!--Postings Area-->
 
-        <!--<div class="postings">-->
-            <!--&lt;!&ndash;<img src="http://americanlawncareidaho.com/wp-content/uploads/2013/11/lawncare-boise.jpg" class="post-img" alt="">&ndash;&gt;-->
-            <!--<p class="post-title">Post Title</p>-->
-            <!--<p class="post-body">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has</p>-->
-            <!--<p class="post-category">-->
-                    <!--<span class="buttons-section">-->
-                        <!--<button data-toggle="modal" href="#postInfo" >Love to help</button>-->
-                        <!--<button type="button" class="btn btn-default comment-btn" id="message" aria-label="Left Align">-->
-                            <!--<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>-->
-                        <!--</button>-->
-                    <!--</span>-->
-            <!--</p>-->
-        <!--</div>-->
 
+<div class="container">
+        <h3>Recent posts around you</h3>
+    <br><br>
+    <div class="post-area"></div>
 </div>
-
-<!-- Comments Modal -->
-<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="modalTitle">User Comments</h4>
-            </div>
-            <div class="modal-body">
-                <div class="comment-div"></div>
-                <hr>
-                <div class="comment-form">
-                    <form id="submit-comment" method="post" action="/comments">
-                        <input type="hidden" id="articleId">
-                        <p><label for="body">Leave a Comment</label></p>
-                        <textarea name="body" form="submit-comment"></textarea>
-
-                        <div class="form-group">
-                            <label for="user">Enter Your Name</label>
-                            <input type="text" id="user" name="user">
-                        </div>
-                        <button type="submit" class="btn btn-default" id="submit-btn">Submit</button>
-                    </form>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- END of Comments Modal -->
 
 <!-- Create Post Modal-->
 <div class="modal fade" id="createPost">
@@ -221,21 +147,17 @@
             </div>
             <div class="modal-body">
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has </p>
-       <!--Request to help-->
-                <button class="btn-danger">
-                    Love to help
-                </button>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Love to help</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        </div>
+    </div>
+</div>
 
 <script src="assets/js/post.js"></script>
-    <script src="assets/js/createpost.js"></script>
+<script src="assets/js/createpost.js"></script>
 
 
 </body>

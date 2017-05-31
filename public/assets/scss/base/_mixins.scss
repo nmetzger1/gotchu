@@ -1,12 +1,12 @@
 // Input Form
 @mixin formInput {
-    border: none;
-    text-align: center;
-    background: $inputBackground;
-    border-bottom: 1px solid rgba(255, 255, 255, .2);
-    color: white;
-    padding: 3%;
-  }
+  border: none;
+  text-align: center;
+  background: $inputBackground;
+  border-bottom: 1px solid rgba(255, 255, 255, .2);
+  color: white;
+  padding: 3%;
+}
 
 @mixin signBtn {
   background-color: #FF2D56;

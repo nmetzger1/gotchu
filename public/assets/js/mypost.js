@@ -7,7 +7,7 @@ $(document).ready(function () {
 
 
     // Adding event listeners to the form to create a new object, and the buttons to edit and delete a post
-    $(document).on("click", ".removePost", handleDeleteButtonPress);
+    $(document).on("click", ".completePost", handleDeleteButtonPress);
 
     // Getting the initial list of Posts
     getPosts();
@@ -20,7 +20,7 @@ $(document).ready(function () {
         newTr.append("<td>" + postData.title + "</td>");
         newTr.append("<td>" + postData.body + "</td>");
         newTr.append("<td><a href='/member?post_id=" + postData.id + "'>Edit Post</a></td>");
-        newTr.append("<td><a style='cursor:pointer;color:red' class='delete-post'>Remove Post</a></td>");
+        newTr.append("<td><a style='cursor:pointer;color:red' class='delete-post'>Complete Post</a></td>");
         return newTr;
     }
 
