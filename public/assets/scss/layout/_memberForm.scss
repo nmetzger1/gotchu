@@ -1,4 +1,3 @@
-
 div.headerMemb {
   height: 30em;
   min-width: 100%;
@@ -8,5 +7,6 @@ div.headerMemb {
   ),
   url('../images/mem5.jpg');
   background-size: cover;
+  border: 1px solid black;
+  background-attachment: fixed;
 }
-

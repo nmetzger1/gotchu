@@ -1,21 +1,44 @@
 //Category side List
 .category {
-  border: 2px solid #324a5e;
+  //Testing
+  //border: 2px solid #324a5e;
   height: 375px;
   width: 200px;
   float: left;
-  margin: 20px 0 0 20px;
+  margin: 55px 0 0 20px;
   border-radius: 10px;
-  .categoryHead {
-    padding: 30px;
-    background: #324a5e;
-    text-align: center;
-    color: #fff;
-  }
-  .categoryBody {
-    height: 70%;
-    width: 100%;
-  }
+}
+//Testing
+//.categoryHead {
+//  padding: 30px;
+//  background: #324a5e;
+//  text-align: center;
+//  color: #fff;
+//  border-radius: 5px;
+//}
+.categoryBody {
+  height: 70%;
+  width: 100%;
+}
+
+.post-area {
+  width: 75%;
+  float:right;
+  //Testing
+  background: #fff;
+}
+//Testing
+.categoryHead {
+  padding: 30px;
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+
+.categorySection {
+  width: 20%;
+  height: 100%;
+  float: left;
+  position: absolute;
 }
 
 .categoryChoices {
@@ -24,6 +47,21 @@
   li {
     padding-top: 30px;
   }
+}
+
+.bottomHeader {
+  padding: 30px;
+  background: #ececec;
+  text-align: center;
+}
+
+.footer {
+  padding:30px;
+  background: #fff;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .itemContainer {
@@ -66,9 +104,11 @@
 }
 
 .userPostSection {
-  width: 80%;
+  width: 100%;
   height: 100%;
   float: right;
+  background: #ececec;
+  position: relative;
 }
 
 .postings {
