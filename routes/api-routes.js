@@ -35,6 +35,43 @@ module.exports = function (app, passport) {
         });
     });
 
+    app.get("/api/userRep/", function (req, res) {
+
+        db.Helper.findAll({
+            where: {
+                UserId: req.user.id
+            }
+        }).then(function (helperData) {
+
+            var helperRep = 0;
+
+            //Get total Reputation from Helper table
+            for(var i = 0; i < helperData.length; i++){
+                helperRep += parseInt(helperData[i].ratings);
+            }
+
+            //Subtract number of open posts
+            db.Post.findAndCountAll({
+                where: {
+                    UserId: req.user.id,
+                    isActive: 1
+                }
+            }).then(function (postCount) {
+
+                var totalRep = helperRep - postCount.count;
+
+                if(totalRep > 0){
+                    res.send(totalRep.toString());
+                }
+                else {
+                    res.send("0");
+                }
+
+            })
+        })
+
+    });
+
     // // Get route for returning posts of a specific category
     // app.get("/api/posts/category/:category", function (req, res) {
     //     db.Post.findAll({
