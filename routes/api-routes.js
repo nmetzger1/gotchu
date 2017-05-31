@@ -25,6 +25,16 @@ module.exports = function (app, passport) {
             });
     });
 
+    app.get("/api/posts/category/:category", function (req, res) {
+        db.Post.findAll({
+            where: {
+                category: req.params.category
+            }
+        }).then(function (dbPost) {
+            res.json(dbPost);
+        });
+    });
+
     // // Get route for returning posts of a specific category
     // app.get("/api/posts/category/:category", function (req, res) {
     //     db.Post.findAll({
