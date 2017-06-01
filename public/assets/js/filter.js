@@ -10,7 +10,7 @@ $(document).ready(function () {
         post = document.getElementsByClassName('postings');
         // Loop through all list items, and hide those who don't match the search           query
         for (i = 0; i < post.length; i++) {
-            a = post[i].getElementsByTagName("p")[0];
+            a = post[i].getElementsByTagName("h1")[0];
             if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
                 post[i].style.display = "";
             } else {
