@@ -7,7 +7,8 @@ $(document).ready(function () {
 
 
     // Adding event listeners to the form to create a new object, and the buttons to edit and delete a post
-    $(document).on("click", ".completePost", handleDeleteButtonPress);
+    // $(document).on("click", ".completePost", handleEditBtn);
+    $(document).on("click", ".editPost", handleCompleteBtn);
 
     // Getting the initial list of Posts
     getPosts();
@@ -19,8 +20,9 @@ $(document).ready(function () {
         console.log(postData);
         newTr.append("<td>" + postData.title + "</td>");
         newTr.append("<td>" + postData.body + "</td>");
-        newTr.append("<td><a href='/member?post_id=" + postData.id + "'>Edit Post</a></td>");
-        newTr.append("<td><a style='cursor:pointer;color:red' class='delete-post'>Complete Post</a></td>");
+        // newTr.append("<td><button class='btn-success'><a href='#" + postData.id + "'>Edit Post</a></button></td>");
+        newTr.append("<td><button class='btn-success' id='editBtn'>Edit Post</button></td>");
+        newTr.append("<td><button class='btn-danger' id='completeBtn'>Complete Post</button></td>");
         return newTr;
     }
 
@@ -69,17 +71,17 @@ $(document).ready(function () {
             data: post
         })
             .done(function () {
-                window.location.href = "/member";
+                window.location.href = "/myposts";
             });
     }
 
 
     // Function for handling what happens when the remove button is clicked
-    function handleDeleteButtonPress() {
+    function handleCompleteBtn() {
         var listItemData = $(this).parent("td").parent("tr").data("post");
         var id = listItemData.id;
         $.ajax({
-            method: "DELETE",
+            method: "PUT",
             url: "/api/posts/" + id
         })
             .done(getPosts);
