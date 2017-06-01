@@ -35,13 +35,12 @@ module.exports = function (app, passport) {
             });
     });
 
-    // Get route for retrieving a single post
-    app.get("/api/posts/:id", function (req, res) {
-        db.Post.findOne({
+    // Get route for retrieving posts for a specific user
+    app.get("/api/posts/byId", function (req, res) {
+        db.Post.findAll({
             where: {
-                id: req.params.id
-            },
-            include: [db.User]
+                UserId: req.user.id
+            }
         }).then(function (dbPost) {
             res.json(dbPost);
         });
@@ -101,7 +100,6 @@ module.exports = function (app, passport) {
     // // Post route for saving a new post
 
     app.post("/api/posts", function (req, res) {
-        console.log(req.body);
         db.Post.create({
             title: req.body.title,
             body: req.body.body,
@@ -113,25 +111,40 @@ module.exports = function (app, passport) {
             });
     });
 
-
-
     // ZIP Code Distance
-    app.get("/distance/:zip1/:zip2", function (req, res) {
+    app.get("/api/distance/:userId", function (req, res) {
 
-        var apiKey = "AIzaSyCCV5MXvW_T_3aruX8UepqRyA1Q-aEWhFA";
-        var zip1 = req.params.zip1;
-        var zip2 = req.params.zip2;
+        var userId = req.params.userId;
 
-        var query = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + zip1 + "&destinations=" + zip2 + "&key=" + apiKey;
-
-        request(query, function (err, response, body) {
-            if(err){
-                console.log(err);
+        db.User.findAll({
+            where: {
+                id: {
+                    $in: [req.user.id, req.params.userId]
+                }
             }
+        }).then(function (zipData) {
 
-            var data = JSON.parse(body);
+            var apiKey = "AIzaSyCCV5MXvW_T_3aruX8UepqRyA1Q-aEWhFA";
+            var zip1 = zipData[0].zipCode;
 
-            res.json(data);
-        })
+            //check if second zip is returned
+            if(zipData[1] === undefined){
+                res.send("0 miles");
+                return;
+            }
+            var zip2 = zipData[1].zipCode;
+
+            var query = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + zip1 + "&destinations=" + zip2 + "&key=" + apiKey;
+
+            request(query, function (err, response, body) {
+                if(err){
+                    console.log(err);
+                }
+
+                var data = JSON.parse(body);
+
+                res.send(data.rows[0].elements[0].distance.text);
+            })
+        });
     });
 };

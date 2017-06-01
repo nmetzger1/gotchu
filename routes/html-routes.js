@@ -17,7 +17,7 @@ module.exports = function (app, passport) {
     app.get("/member", isLoggedIn, function (req, res) {
 
         var options = {
-            user: req.user
+            user: req.user.id
         };
         console.log(req.user);
         res.sendFile(path.join (__dirname + "/../public/member.html"), options);
@@ -27,7 +27,7 @@ module.exports = function (app, passport) {
     // CREATE POST Page
     app.get("/createpost", function (req, res) {
         var options = {
-            user: req.user
+            user: req.user.id
         };
         res.sendFile(path.join (__dirname + "/../public/createPost.html"), options);
     });
@@ -35,6 +35,13 @@ module.exports = function (app, passport) {
     //MEMBER PAGE
     app.post("/member", isLoggedIn, function (req, res) {
 
+        var options = {
+            user: req.user.id
+        };
+        res.sendFile(path.join (__dirname + "/../public/member.html"), options);
+    });
+
+    app.get("/myposts", isLoggedIn, function (req, res) {
         var options = {
             user: req.user
         };
