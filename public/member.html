@@ -2,6 +2,8 @@
 <html>
 
 <head>
+    <!-- Favicon-->
+    <link rel="shortcut icon" type="image/xicon" href="assets/images/favicon.ico">
     <!-- Jqery Cdn -->
     <script  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <!-- Bootstrap CSS -->
@@ -48,12 +50,13 @@
                 <!--Member post Drop down-->
                 <ul class=" creatPostDropDown nav navbar-nav ">
                     <li>
-                        <button data-toggle="modal" href="#createPost" class="postBtn btn btn-default navbar-btn">Create Post</button>
+                        <a class="btn btn-default" href="/createpost">Create Post</a>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle memDropDown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Member<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="/myposts">My Posts</a></li>
+                            <li><a href="#">Ratings</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="/logout">Sign Out</a></li>
                         </ul>
@@ -68,8 +71,11 @@
 
 <!--Postings Area-->
 <div class="bottomHeader">
-    <h3>Recent posts around you</h3>
+    <div class="categoryHead">
+        <h2>Recent posts around you</h2>
+    </div>
 </div>
+
 <div class="userPostSection">
     <div class="categorySection">
         <!--Category-->
@@ -80,11 +86,12 @@
             </div>
             <div class="categoryBody">
                 <ul class="categoryChoices">
-                    <li><a class="catLink" data-type="all" href="">All</a></li>
-                    <li><a class="catLink" data-type="car" href="">Car</a></li>
-                    <li><a class="catLink" data-type="house" href="">House</a></li>
-                    <li><a class="catLink" data-type="pet" href="">Pets</a></li>
-                    <li><a class="catLink" data-type="other" href="">Other Services</a></li>
+                    <li><button class="catLink btn btn-default" data-type="all" href="">All</button></li>
+                    <li><button class="catLink btn btn-default" data-type="car" href="">Car</button></li>
+                    <li><button class="catLink btn btn-default" data-type="home" href="">Home</button></li>
+                    <li><button class="catLink btn btn-default" data-type="personal" href="">Personal</button></li>
+                    <li><button class="catLink btn btn-default" data-type="pet" href="">Pets</button></li>
+                    <li><button class="catLink btn btn-default" data-type="other" href="">Other Service</button></li>
                 </ul>
             </div>
         </div>
@@ -93,53 +100,50 @@
     <div class="post-area"></div>
 </div>
 
-<!-- Create Post Modal-->
-<div class="modal fade" id="createPost">
-    <div class="modal-dialog">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="panel-title">Create a new post</h4>
-            </div>
-            <form id="newPost">
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <input class="form-control" id="title" placeholder="Post Title" type="text" required/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <textarea style="resize:vertical;" class="form-control" placeholder="Post Description" rows="6" id="body"required></textarea>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <br>
-                            <label for="category">Select Category</label>
-                            <br>
-                            <select class="form-control" id="category">
-                                <option value="Home">Home</option>
-                                <option value="Cars">Cars</option>
-                                <option value="Pets">Pets</option>
-                                <option value="Personal">Personal</option>
-                                <option value="Other Services">Other Services</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-footer">
-                    <button type="submit" class="btn btn-success">Create Post</button>
-                    <button type="reset" class="btn btn-danger">Clear</button>
-                    <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-
-
+<!--&lt;!&ndash; Create Post Modal&ndash;&gt;-->
+<!--<div class="modal fade" id="createPost">-->
+    <!--<div class="modal-dialog">-->
+        <!--<div class="panel panel-primary">-->
+            <!--<div class="panel-heading">-->
+                <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+                <!--<h4 class="panel-title">Create a new post</h4>-->
+            <!--</div>-->
+            <!--<form id="newPost">-->
+                <!--<div class="modal-body">-->
+                    <!--<div class="row">-->
+                        <!--<div class="col-lg-12 col-md-12 col-sm-12">-->
+                            <!--<input class="form-control" id="title" placeholder="Post Title" type="text" required/>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="row">-->
+                        <!--<div class="col-lg-12 col-md-12 col-sm-12">-->
+                            <!--<textarea style="resize:vertical;" class="form-control" placeholder="Post Description" rows="6" id="body"required></textarea>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="row">-->
+                        <!--<div class="col-lg-12 col-md-12 col-sm-12">-->
+                            <!--<br>-->
+                            <!--<label for="category">Select Category</label>-->
+                            <!--<br>-->
+                            <!--<select class="form-control" id="category">-->
+                                <!--<option value="Home">Home</option>-->
+                                <!--<option value="Cars">Cars</option>-->
+                                <!--<option value="Pets">Pets</option>-->
+                                <!--<option value="Personal">Personal</option>-->
+                                <!--<option value="Other Services">Other Services</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="panel-footer">-->
+                    <!--<button type="submit" class="btn btn-success">Create Post</button>-->
+                    <!--<button type="reset" class="btn btn-danger">Clear</button>-->
+                    <!--<button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>-->
+                <!--</div>-->
+            <!--</form>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 
 <div class="modal fade" id="postInfo">
     <div class="modal-dialog">
@@ -162,7 +166,6 @@
 <script src="assets/js/post.js"></script>
 <script src="assets/js/createpost.js"></script>
 <script src="assets/js/filter.js" ></script>
-
 
 </body>
 </html>

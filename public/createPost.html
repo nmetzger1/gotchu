@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <!-- Favicon-->
@@ -23,11 +23,12 @@
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
 <meta charset="utf-8">
-<title>My Posts</title>
+<title>Create Posts</title>
 </head>
 
 <body>
 
+<!--Create Post and Members Post drop down-->
 <div class="wrapperHead">
     <div class="headerMemb img-responsive">
         <div class="navMem">
@@ -53,39 +54,43 @@
     </div>
 </div>
 
-    <div class="bottomHeader">
-        <div class="categoryHead">
-            <h2 align="center">My Posts</h2>
-        </div>
+<div class="bottomHeader">
+    <div class="categoryHead">
+        <h2 align="center">Create Post</h2>
     </div>
+</div>
 
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="post-container">
-
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Post Title</th>
-                                <th>Post Description</th>
-                                <th>Edit Post</th>
-                                <th>Mark as Complete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr id="post-row">
-                                <div class="post-line">
-                                    <td colspan="4"></td>
-                                </div>
-                            </tr>
-                        </tbody>
-                    </table>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form id="newPost">
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input placeholder="Post Title" type="text" class="form-control" id="title">
+                    <br />
+                    <label for="body">Body:</label>
+                    <textarea placeholder="Post Description" class="form-control" rows="10" id="body"></textarea>
+                    <div class="form-group">
+                        <label for="category">Select Category:</label>
+                        <select class="form-control" id="category">
+                            <option value="Home">Home</option>-->
+                            <option value="Cars">Cars</option>
+                            <option value="Pets">Pets</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Other Services">Other Services</option>
+                        </select>
+                    </div>
+                    <br />
+                    <button type="submit" class="btn btn-success submit">Create Post</button>
+                    <button type="reset" class="btn btn-danger">Clear</button>
+                    <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
-
-<script src="assets/js/mypost.js"></script>
+</div>
+<!-- Custom Script -->
+    <script src="assets/js/createpost.js" type="text/javascript"></script>
 
 </body>
+
 </html>
