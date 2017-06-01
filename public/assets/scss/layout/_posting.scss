@@ -1,22 +1,16 @@
 //Category side List
 .category {
-  //Testing
-  //border: 2px solid #324a5e;
-  height: 375px;
+  height: 500px;
   width: 200px;
   float: left;
   margin: 55px 0 0 20px;
   border-radius: 10px;
-  background-color: lightblue;
+  //background-color: lightblue;
 }
-//Testing
-//.categoryHead {
-//  padding: 30px;
-//  background: #324a5e;
-//  text-align: center;
-//  color: #fff;
-//  border-radius: 5px;
-//}
+.catLink{
+  width: 100%;
+}
+
 .categoryBody {
   height: 70%;
   width: 100%;
@@ -35,7 +29,7 @@
   border-bottom: 2px solid black;
   font-weight: bolder;
   font-size: large;
-  background-color: lightblue;
+  //background-color: lightblue;
 }
 
 .categorySection {

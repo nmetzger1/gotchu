@@ -11,7 +11,7 @@ $(document).ready(function () {
     function createPostDiv(postData) {
             var Post = $("<div class='postings'>");
             Post.data("posts", postData);
-            console.log("posts", postData);
+            // console.log("posts", postData);
             Post.append("<h1>" + postData.title + "</h1>");
             Post.append('<img src="https://s-media-cache-ak0.pinimg.com/originals/28/81/4d/28814dbf59005e2f4953ee62f76df0b6.jpg" width="250px">');
             // Post.append("<p>" + postData.body + "</p>");
