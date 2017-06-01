@@ -36,7 +36,6 @@ $(document).ready(function () {
 
 
                 $.get('/api/distance/' + data[i].UserId, function (distance) {
-
                     newPost.distance = distance;
                     postsToAdd.push(createPostDiv(newPost));
                     renderPost(postsToAdd);
@@ -53,7 +52,6 @@ $(document).ready(function () {
         console.log(posts);
         if (posts.length) {
             console.log("BING!");
-            console.log(posts);
             $(".post-area").prepend(posts);
         }
 
