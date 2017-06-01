@@ -99,7 +99,6 @@ module.exports = function (app, passport) {
     // // Post route for saving a new post
 
     app.post("/api/posts", function (req, res) {
-        console.log(req.body);
         db.Post.create({
             title: req.body.title,
             body: req.body.body,
@@ -110,33 +109,7 @@ module.exports = function (app, passport) {
                 res.json(dbPost);
             });
     });
-    // app.post("/api/posts", function (req, res) {
-    //     console.log(req.body);
-    //     db.Post.create({
-    //         title: req.body.title,
-    //         body: req.body.body,
-    //         category: req.body.category,
-    //         UserId: req.user.id
-    //     })
-    //         .then(function (dbPost) {
-    //             res.json(dbPost);
-    //         });
-    // });
-
-    //
-    // // Delete Route for deleting posts
-    // app.delete("/api/posts/:id", function (req, res) {
-    //     db.Post.destroy({
-    //         where: {
-    //             id: req.params.id
-    //         }
-    //     })
-    //         .then(function (dbPost) {
-    //             res.json(dbPost);
-    //         });
-    // });
-    //
-    // // Put route for updating posts
+     // // Put route for updating posts
     // app.put("/api/posts/update", function (req, res) {
     //     db.Post.update({
     //         title: req.body.title,
@@ -153,44 +126,40 @@ module.exports = function (app, passport) {
     //         });
     // });
     //
-    // //CREATE POST
-    // app.post("/api/post/create", function (req, res) {
-    //
-    //
-    //     var newPost = {
-    //         title: req.body.title,
-    //         body: req.body.body,
-    //         category: req.body.category,
-    //         UserId: req.user.id
-    //     };
-    //     console.log("Post Created: ", newPost);
-    //
-    //     db.Post.create(newPost)({
-    //         title: req.body.title,
-    //         boddy: req.body.body,
-    //         UserId: req.user.id
-    //     }).then(function (result) {
-    //         res.redirect("/member");
-    //     });
-    // });
-
     // ZIP Code Distance
-    app.get("/distance/:zip1/:zip2", function (req, res) {
+    app.get("/api/distance/:userId", function (req, res) {
 
-        var apiKey = "AIzaSyCCV5MXvW_T_3aruX8UepqRyA1Q-aEWhFA";
-        var zip1 = req.params.zip1;
-        var zip2 = req.params.zip2;
+        var userId = req.params.userId;
 
-        var query = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + zip1 + "&destinations=" + zip2 + "&key=" + apiKey;
-
-        request(query, function (err, response, body) {
-            if(err){
-                console.log(err);
+        db.User.findAll({
+            where: {
+                id: {
+                    $in: [req.user.id, req.params.userId]
+                }
             }
+        }).then(function (zipData) {
 
-            var data = JSON.parse(body);
+            var apiKey = "AIzaSyCCV5MXvW_T_3aruX8UepqRyA1Q-aEWhFA";
+            var zip1 = zipData[0].zipCode;
 
-            res.json(data);
-        })
+            //check if second zip is returned
+            if(zipData[1] === undefined){
+                res.send("0 miles");
+                return;
+            }
+            var zip2 = zipData[1].zipCode;
+
+            var query = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + zip1 + "&destinations=" + zip2 + "&key=" + apiKey;
+
+            request(query, function (err, response, body) {
+                if(err){
+                    console.log(err);
+                }
+
+                var data = JSON.parse(body);
+
+                res.send(data.rows[0].elements[0].distance.text);
+            })
+        });
     });
 };
