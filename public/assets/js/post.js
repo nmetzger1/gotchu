@@ -3,7 +3,6 @@
 $(document).ready(function () {
     //Getting references to the post input and post container
 
-    // var postDiv = $(".post-area")
 
     // Getting the initial list of Posts
     getPosts();
@@ -33,7 +32,7 @@ $(document).ready(function () {
 
     // Function for retrieving posts and getting them ready to be rendered to the page
     function getPosts() {
-        $.get('/api/posts/', function (data) {
+        $.get('/api/posts', function (data) {
             var postsToAdd = [];
             for (var i = 0; i < data.length; i++) {
                 postsToAdd.push(createPostDiv(data[i]));

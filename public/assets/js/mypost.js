@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     //Getting references to the post input and post container, as well as the table body
     var postList = $("tbody");
@@ -39,7 +38,7 @@ $(document).ready(function () {
     }
 
 
-     // Function for rendering list of posts to the page
+    // Function for rendering list of posts to the page
     function renderPostList(rows) {
         postList.children().not(":last").remove();
         postContainer.children(".alert").remove();

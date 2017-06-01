@@ -18,22 +18,48 @@ module.exports = function (app, passport) {
     }));
 
     // Get route for getting all of the posts
-    app.get("/api/posts/", function (req, res) {
-        db.Post.findAll()
+    app.get("/api/posts", function (req, res) {
+        var query = {};
+        if (req.query.user_id) {
+            query.UserId = req.query.user_id;
+        }
+        db.Post.findAll({
+            where: query,
+            include: [db.User],
+            order: [
+                ['id', 'DESC']
+            ]
+        })
             .then(function (dbPost) {
                 res.json(dbPost);
             });
     });
 
-    app.get("/api/posts/category/:category", function (req, res) {
-        db.Post.findAll({
+    // Get route for retrieving a single post
+    app.get("/api/posts/:id", function (req, res) {
+        db.Post.findOne({
             where: {
-                category: req.params.category
-            }
+                id: req.params.id
+            },
+            include: [db.User]
         }).then(function (dbPost) {
             res.json(dbPost);
         });
     });
+
+    // Put route for editing posts
+    app.put("/api/posts", function (req, res) {
+        db.Post.update(
+            req.body,
+            {
+                where: {
+                    id: req.body.id
+                }
+            }).then(function (dbPost) {
+            res.json(dbPost);
+        });
+    });
+
 
     app.get("/api/userRep/", function (req, res) {
 
@@ -72,30 +98,6 @@ module.exports = function (app, passport) {
 
     });
 
-    // // Get route for returning posts of a specific category
-    // app.get("/api/posts/category/:category", function (req, res) {
-    //     db.Post.findAll({
-    //         where: {
-    //             category: req.params.category
-    //         }
-    //     })
-    //         .then(function (dbPost) {
-    //             res.json(dbPost);
-    //         });
-    // });
-    //
-    // // Get route for retrieving a single post
-    // app.get("/api/posts/:id", function (req, res) {
-    //     db.Post.findOne({
-    //         where: {
-    //             id: req.params.id
-    //         }
-    //     })
-    //         .then(function (dbPost) {
-    //             res.json(dbPost);
-    //         });
-    // });
-    //
     // // Post route for saving a new post
 
     app.post("/api/posts", function (req, res) {
@@ -110,69 +112,8 @@ module.exports = function (app, passport) {
                 res.json(dbPost);
             });
     });
-    // app.post("/api/posts", function (req, res) {
-    //     console.log(req.body);
-    //     db.Post.create({
-    //         title: req.body.title,
-    //         body: req.body.body,
-    //         category: req.body.category,
-    //         UserId: req.user.id
-    //     })
-    //         .then(function (dbPost) {
-    //             res.json(dbPost);
-    //         });
-    // });
 
-    //
-    // // Delete Route for deleting posts
-    // app.delete("/api/posts/:id", function (req, res) {
-    //     db.Post.destroy({
-    //         where: {
-    //             id: req.params.id
-    //         }
-    //     })
-    //         .then(function (dbPost) {
-    //             res.json(dbPost);
-    //         });
-    // });
-    //
-    // // Put route for updating posts
-    // app.put("/api/posts/update", function (req, res) {
-    //     db.Post.update({
-    //         title: req.body.title,
-    //         body: req.body.body,
-    //         category: req.body.category,
-    //         UserId: req.user.id
-    //     }, {
-    //         where: {
-    //             id: req.body.id
-    //         }
-    //     })
-    //         .then(function (dbPost) {
-    //             res.json(dbPost);
-    //         });
-    // });
-    //
-    // //CREATE POST
-    // app.post("/api/post/create", function (req, res) {
-    //
-    //
-    //     var newPost = {
-    //         title: req.body.title,
-    //         body: req.body.body,
-    //         category: req.body.category,
-    //         UserId: req.user.id
-    //     };
-    //     console.log("Post Created: ", newPost);
-    //
-    //     db.Post.create(newPost)({
-    //         title: req.body.title,
-    //         boddy: req.body.body,
-    //         UserId: req.user.id
-    //     }).then(function (result) {
-    //         res.redirect("/member");
-    //     });
-    // });
+
 
     // ZIP Code Distance
     app.get("/distance/:zip1/:zip2", function (req, res) {

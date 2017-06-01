@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     // Gets an optional query string from our url
     var url = window.location.search;
@@ -38,7 +37,7 @@ $(document).ready(function () {
 
     // Submits a new post and bring user to member page upon completion
     function submitPost(Post) {
-        $.post("/api/posts/", Post, function () {
+        $.post("/api/posts", Post, function () {
             window.location.href = '/member';
         });
     }
