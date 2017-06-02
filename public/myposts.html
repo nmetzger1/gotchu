@@ -32,8 +32,9 @@
     <div class="headerMemb img-responsive">
         <div class="navMem">
             <div class="navTabs">
-                <h2>GotChu</h2>
+                <h2>Neighborly</h2>
                 <img class="memLogo" src="assets/images/team.png">
+                <!--Member post Drop down-->
                 <ul class=" creatPostDropDown nav navbar-nav ">
                     <li>
                         <a class="btn btn-default" href="/member">Back to Home</a>
@@ -41,8 +42,8 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle memDropDown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Member<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="myposts.html">My Posts</a></li>
-                            <li><a href="#">Ratings</a></li>
+                            <li><a href="/myposts">My Posts</a></li>
+                            <li><span class="reputation"></span></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="/logout">Sign Out</a></li>
                         </ul>
@@ -52,6 +53,8 @@
         </div>
     </div>
 </div>
+
+<div class="userPostSection">
 
     <div class="bottomHeader">
         <div class="categoryHead">
@@ -63,7 +66,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="post-container">
 
-                    <table class="table table-striped">
+                    <table class="table table">
                         <thead>
                             <tr>
                                 <th>Post Title</th>
@@ -83,7 +86,8 @@
                 </div>
             </div>
         </div>
-    </div>
+</div>
+
 
 <script src="assets/js/mypost.js"></script>
 

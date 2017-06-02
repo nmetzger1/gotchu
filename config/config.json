@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "root",
+    "password": "",
     "database": "GOTCHU",
     "host": "localhost",
     "dialect": "mysql"

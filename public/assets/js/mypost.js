@@ -12,6 +12,9 @@ $(document).ready(function () {
     // Getting the initial list of Posts
     getPosts();
 
+    // Get User Reputation
+    getRep();
+
     // Function for creating a new list row for posts
     function createPostRow(postData) {
         var newTr = $("<tr>");
@@ -60,6 +63,13 @@ $(document).ready(function () {
                 updating = true;
             }
         });
+    }
+
+    //Function for showing user Reputation
+    function getRep() {
+        $.get("/api/userRep", function (data) {
+            $('.reputation').html("My Rep: " + data);
+        })
     }
 
     // Update a given post, bring user to the member page when done
