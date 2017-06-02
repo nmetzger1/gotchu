@@ -9,11 +9,36 @@ $(document).ready(function () {
     // Get User Reputation
     getRep();
 
+    //Populate Detail Modal
+    $('.post-area').on("click", ".detail-btn", function () {
+
+        //get Id of Div
+        var postId = $(this).closest("div").prop("id");
+
+        //get actual post Id
+        var actualId = postId.split("post");
+
+        $.get("/api/posts/" + actualId[1], function (data) {
+            $('.modal-title').html('<h4>' + data.title + '</h4>');
+            $('.postDetail').html('<p>' + data.body + '</p>');
+        });
+
+        //set postID for help button
+        $('.help-btn').data("postId", actualId[1]);
+    });
+
+    //Assign Helper
+    $('.help-btn').on("click", function () {
+
+       $.post("/api/helper/" + $(this).data("postId"), function () {
+           window.location.href = '/member';
+       })
+    });
 
     //Function for showing user Reputation
     function getRep() {
         $.get("/api/userRep", function (data) {
-            $('#reputation').html(data);
+            $('.reputation').html("My Rep: " + data);
         })
     }
 
@@ -21,13 +46,15 @@ $(document).ready(function () {
     // // Function for creating a new list row for posts
     function createPostDiv(postData) {
 
-        var Post = $("<div class='postings'>");
-        //Post.data("posts", postData);
+        var postId = "post" + postData.id;
+
+        var Post = $('<div class="postings">');
+        Post.attr('id', postId);
         Post.append('<img src="https://s-media-cache-ak0.pinimg.com/originals/28/81/4d/28814dbf59005e2f4953ee62f76df0b6.jpg" width="250px">');
         Post.append("<p>" + postData.title + "</p>");
         Post.append("<p>" + postData.category + "</p>");
         Post.append("<p>" + postData.distance  + "</p>");
-        Post.append('<button data-toggle="modal" href="#postInfo" >Details</button>');
+        Post.append('<button data-toggle="modal" class="detail-btn" href="#postInfo" >Details</button>');
         // var button = $('<button type="button" class="btn btn-default comment-btn" id="message" aria-label="Left Align"></button>');
         // Post.append(button);
         // button.append('<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>');

@@ -73,6 +73,17 @@ module.exports = function (app, passport) {
         });
     });
 
+    // Get rout for retrieving single post by post id
+    app.get("/api/posts/:id", function (req, res) {
+        db.Post.findOne({
+            where: {
+                id: req.params.id
+            }
+        }) .then(function (dbPost) {
+            res.json(dbPost);
+        })
+    });
+
     // Put route for editing posts
     app.put("/api/posts", function (req, res) {
         db.Post.update(
@@ -83,6 +94,30 @@ module.exports = function (app, passport) {
                 }
             }).then(function (dbPost) {
             res.json(dbPost);
+        });
+    });
+
+    //ADD TO HELPER TABLE
+    app.post("/api/helper/:postId", function (req, res) {
+
+        request("http://localhost:3000/api/posts/" + req.params.postId, function (err, response, body) {
+
+            var userData = JSON.parse(body);
+
+            console.log("BODY", userData.id);
+
+            if(userData.id === parseInt(req.user.id)){
+                res.send("You cannot volunteer for your own post.")
+            }
+            else {
+
+                db.Helper.create({
+                    PostId: req.params.postId,
+                    UserId: req.user.id
+                }).then(function (helperData) {
+                    res.send(helperData);
+                })
+            }
         });
     });
 
@@ -99,8 +134,17 @@ module.exports = function (app, passport) {
 
             //Get total Reputation from Helper table
             for(var i = 0; i < helperData.length; i++){
+
+                console.log(helperData[i]);
+
+                if(helperData[i].ratings === null){
+                    break;
+                }
+
                 helperRep += parseInt(helperData[i].ratings);
             }
+
+            console.log("HELPER REP", helperRep);
 
             //Subtract number of open posts
             db.Post.findAndCountAll({
@@ -124,7 +168,6 @@ module.exports = function (app, passport) {
     });
 
     // // Post route for saving a new post
-
     app.post("/api/posts", function (req, res) {
         db.Post.create({
             title: req.body.title,

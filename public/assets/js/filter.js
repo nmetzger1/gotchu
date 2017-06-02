@@ -8,7 +8,7 @@ $(document).ready(function () {
         post = document.getElementsByClassName('postings');
             cat = $(this).data('type');
         for (var i = 0; i < post.length; i++) {
-            text = post[i].getElementsByTagName("p")[0];
+            text = post[i].getElementsByTagName("p")[1];
             if (cat == 'all') {
                 post[i].style.display = "";
             }
