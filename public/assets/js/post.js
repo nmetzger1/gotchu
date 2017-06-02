@@ -42,12 +42,11 @@ $(document).ready(function () {
         })
     }
 
-
     // // Function for creating a new list row for posts
     function createPostDiv(postData) {
 
         var postId = "post" + postData.id;
-
+        console.log("**********");
         var Post = $('<div class="postings">');
         Post.attr('id', postId);
         Post.append('<img src="https://s-media-cache-ak0.pinimg.com/originals/28/81/4d/28814dbf59005e2f4953ee62f76df0b6.jpg" width="250px">');
