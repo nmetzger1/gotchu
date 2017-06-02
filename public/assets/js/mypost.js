@@ -1,3 +1,5 @@
+var newPost = {};
+
 $(document).ready(function () {
     //Getting references to the post input and post container, as well as the table body
     var postList = $("tbody");
@@ -61,9 +63,8 @@ $(document).ready(function () {
                 category: postCategorySelect.val()
             };
             console.log(newPost);
-
+            updatePost(newPost);
         });
-        updatePost(newPost);
     });
 
     // Function for retrieving posts and getting them ready to be rendered to the page
