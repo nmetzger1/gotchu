@@ -12,14 +12,14 @@
 }
 
 .categoryBody {
-  height: 70%;
+  height: 100%;
   width: 100%;
+  background: #fff;
 }
 
 .post-area {
   width: 75%;
   float:right;
-  margin-right: 10px;
   border-radius: 5px;
   background: #fff;
 }
@@ -30,7 +30,7 @@
   font-weight: bolder;
   font-size: large;
   color: #fff;
-  //background-color: lightblue;
+  background-color: #234;
 }
 
 .categorySection {
@@ -49,9 +49,11 @@
 }
 
 .bottomHeader {
-  padding: 30px;
+  padding: 5px;
   text-align: center;
-  color: #fff;
+  color: black;
+  background: #fff;
+  border: 2px solid #eee;
 }
 
 .footer {
@@ -108,7 +110,7 @@
   float: right;
   background: #ececec;
   position: relative;
-  background: linear-gradient(rgba(17,19,68,0.2), rgba(17,19,68,0.5)),url(../images/mem5.jpg);
+  background: url(../images/mem5.jpg);
   background-attachment: fixed;
 
 }
@@ -116,4 +118,6 @@
 .postings {
   display: inline-block;
   padding: 1em;
+  border:1px solid #eee;
+  width: 33.33%;
 }
