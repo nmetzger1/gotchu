@@ -20,49 +20,17 @@ module.exports = function (app, passport) {
     // Get route for getting all of the posts
     app.get("/api/posts", function (req, res) {
         var query = {};
-        var zips = [];
 
         if (req.query.user_id) {
             query.UserId = req.query.user_id;
         }
-        db.Post.findAll({
-            where: query,
-            include: [db.User],
-            order: [
-                ['id', 'DESC']
-            ]
-        }).then(function (dbPost) {
 
-            //add user ZIP codes to array
-            for(var i = 0; i < dbPost.length; i++){
-                zips.push(dbPost[i].User.zipCode);
-            }
-
-            var query = "http://localhost:3000/api/distance/" + req.user.id + "/" + zips.join("|");
-
-            //get distance
-            request(query, function (error, request, distances) {
-
-                if(error){
-                    throw error;
-                }
-
-                //parse string into array
-                var distanceArray = JSON.parse(distances);
-
-                //add zip to each post
-                for (var i = 0; i < distanceArray.length; i++){
-                    dbPost[i].dataValues.distance = distanceArray[i];
-                }
-
-                //Send post data
-                res.json(dbPost);
-            });
-
-        });
+        getAllPosts(req.user.id, query, function (dbData) {
+            res.json(dbData);
+        })
     });
 
-    // Get route for retrieving posts for a specific user
+// Get route for retrieving posts for a specific user
     app.get("/api/posts/byId", function (req, res) {
         db.Post.findAll({
             where: {
@@ -73,7 +41,7 @@ module.exports = function (app, passport) {
         });
     });
 
-    // Get rout for retrieving single post by post id
+// Get rout for retrieving single post by post id
     app.get("/api/posts/:id", function (req, res) {
         db.Post.findOne({
             where: {
@@ -84,7 +52,7 @@ module.exports = function (app, passport) {
         })
     });
 
-    // Put route for editing posts
+// Put route for editing posts
     app.put("/api/posts", function (req, res) {
         db.Post.update(
             req.body,
@@ -97,14 +65,12 @@ module.exports = function (app, passport) {
         });
     });
 
-    //ADD TO HELPER TABLE
+//ADD TO HELPER TABLE
     app.post("/api/helper/:postId", function (req, res) {
 
         request("http://localhost:3000/api/posts/" + req.params.postId, function (err, response, body) {
 
             var userData = JSON.parse(body);
-
-            console.log("BODY", userData.id);
 
             if(userData.id === parseInt(req.user.id)){
                 res.send("You cannot volunteer for your own post.")
@@ -121,7 +87,6 @@ module.exports = function (app, passport) {
         });
     });
 
-
     app.get("/api/userRep/", function (req, res) {
 
         db.Helper.findAll({
@@ -135,16 +100,12 @@ module.exports = function (app, passport) {
             //Get total Reputation from Helper table
             for(var i = 0; i < helperData.length; i++){
 
-                console.log(helperData[i]);
-
                 if(helperData[i].ratings === null){
                     break;
                 }
 
                 helperRep += parseInt(helperData[i].ratings);
             }
-
-            console.log("HELPER REP", helperRep);
 
             //Subtract number of open posts
             db.Post.findAndCountAll({
@@ -167,7 +128,7 @@ module.exports = function (app, passport) {
 
     });
 
-    // // Post route for saving a new post
+// // Post route for saving a new post
     app.post("/api/posts", function (req, res) {
         db.Post.create({
             title: req.body.title,
@@ -180,20 +141,53 @@ module.exports = function (app, passport) {
             });
     });
 
+    //GET ALL POSTS
+    function getAllPosts(userId, query, callback) {
+
+        db.Post.findAll({
+            where: query,
+            include: [db.User],
+            order: [
+                ['id', 'DESC']
+            ]
+        }).then(function (dbPost) {
+
+            var zips = [];
+
+            //add user ZIP codes to array
+            for(var i = 0; i < dbPost.length; i++){
+                zips.push(dbPost[i].User.zipCode);
+            }
+
+            getDistance(userId, zips, function (distances) {
+
+                //parse string into array
+                var distanceArray = JSON.parse(distances);
+
+                //add zip to each post
+                for (var i = 0; i < distanceArray.length; i++){
+                    dbPost[i].dataValues.distance = distanceArray[i];
+                }
+
+                console.log("FUNCTION", dbPost);
+
+                //Send post data
+                callback(dbPost);
+            });
+        });
+    }
+
     // ZIP Code Distance
-    app.get("/api/distance/:user1/:zipCodes", function (req, res) {
-
-        var userId = req.params.userId;
-
+    function getDistance(currentUser, zipCodes, callback) {
         db.User.findAll({
             where: {
-                id: req.params.user1
+                id: currentUser
             }
         }).then(function (zipData) {
 
             var apiKey = "AIzaSyCCV5MXvW_T_3aruX8UepqRyA1Q-aEWhFA";
             var zip1 = zipData[0].zipCode;
-            var zip2 = req.params.zipCodes;
+            var zip2 = zipCodes.join("|");
 
             var query = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + zip1 + "&destinations=" + zip2 + "&key=" + apiKey;
 
@@ -203,15 +197,14 @@ module.exports = function (app, passport) {
                 }
 
                 var data = JSON.parse(body);
-
                 var distanceArray = [];
 
                 for(var i = 0; i < data.rows[0].elements.length; i++){
                     distanceArray.push(data.rows[0].elements[i].distance.text);
                 }
 
-                res.send(JSON.stringify(distanceArray));
+                callback(JSON.stringify(distanceArray));
             })
         });
-    });
+    }
 };
