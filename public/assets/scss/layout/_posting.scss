@@ -19,16 +19,17 @@
 .post-area {
   width: 75%;
   float:right;
-  //Testing
+  margin-right: 10px;
+  border-radius: 5px;
   background: #fff;
 }
 //Testing
 .categoryHead {
   padding: 30px;
   text-align: center;
-  border-bottom: 2px solid black;
   font-weight: bolder;
   font-size: large;
+  color: #fff;
   //background-color: lightblue;
 }
 
@@ -49,8 +50,8 @@
 
 .bottomHeader {
   padding: 30px;
-  background: #ececec;
   text-align: center;
+  color: #fff;
 }
 
 .footer {
@@ -107,9 +108,12 @@
   float: right;
   background: #ececec;
   position: relative;
+  background: linear-gradient(rgba(17,19,68,0.2), rgba(17,19,68,0.5)),url(../images/mem5.jpg);
+  background-attachment: fixed;
+
 }
 
 .postings {
   display: inline-block;
-  padding: 2em;
+  padding: 1em;
 }

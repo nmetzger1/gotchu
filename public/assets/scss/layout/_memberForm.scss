@@ -1,13 +1,14 @@
 div.headerMemb {
-  height: 30em;
+  height: 5em;
   min-width: 100%;
   //background: linear-gradient(
   //                rgba(0, 0, 0, 0.2),
   //                rgba(0, 0, 0, 0.2)
   //),
   //url('../images/mem5.jpg');
-background: linear-gradient(rgba(17, 19, 68, 0.2), rgba(17, 19, 68, 0.5)),url(../images/mem5.jpg);
+//background: linear-gradient(rgba(17, 19, 68, 0.2), rgba(17, 19, 68, 0.5)),url(../images/mem5.jpg);
   background-size: cover;
   border: 1px solid black;
   background-attachment: fixed;
+  background: lightslategray;
 }

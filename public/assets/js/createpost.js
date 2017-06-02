@@ -2,14 +2,10 @@ $(document).ready(function () {
     // Gets an optional query string from our url
     var url = window.location.search;
     var postId;
+    var posts;
     // Sets a flag of whether or not we're updating a post to be false initially
     var updating = false;
 
-    // If we have this section in our url, we pull out the post id from the url
-    if (url.indexOf("?post_id=") !== -1) {
-        postId = url.split('=')[1];
-        getPostData(postId);
-    }
 
     // Getting jQuery references to the post body, title, form, and category select
     var titleInput = $("#title");
@@ -29,10 +25,15 @@ $(document).ready(function () {
 
         };
         console.log("New post: " + newPost);
-
-        submitPost(newPost);
-
-
+        // If we're updating a post run updatePost to update a post
+        // Otherwise run submitPost to create a whole new post
+        if (updating) {
+            newPost.id = postId;
+            updatePost(newPost);
+        }
+        else {
+            submitPost(newPost);
+        }
     });
 
     // Submits a new post and bring user to member page upon completion

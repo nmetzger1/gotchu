@@ -62,13 +62,12 @@ module.exports = function (app, passport) {
         });
     });
 
-    // Get route for retrieving a single post
-    app.get("/api/posts/:id", function (req, res) {
-        db.Post.findOne({
+    // Get route for retrieving posts for a specific user
+    app.get("/api/posts/byId", function (req, res) {
+        db.Post.findAll({
             where: {
-                id: req.params.id
-            },
-            include: [db.User]
+                UserId: req.user.id
+            }
         }).then(function (dbPost) {
             res.json(dbPost);
         });

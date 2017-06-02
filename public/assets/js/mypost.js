@@ -28,7 +28,7 @@ $(document).ready(function () {
 
     // Function for retrieving posts and getting them ready to be rendered to the page
     function getPosts() {
-        $.get('/api/posts/', function (data) {
+        $.get('/api/posts/byId',  function (data) {
             var rowsToAdd = [];
             for (var i = 0; i < data.length; i++) {
                 rowsToAdd.push(createPostRow(data[i]));
