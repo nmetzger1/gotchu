@@ -87,23 +87,88 @@
             </div>
         </div>
 
-    <div class="modal fade" id="editPost">
+    <!--<div class="modal fade" id="editPost">-->
+        <!--<div class="modal-dialog">-->
+            <!--<div class="modal-content">-->
+                <!--<div class="modal-header">-->
+                    <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+                    <!--<h4 class="modal-title">Edit Post</h4>-->
+                <!--</div>-->
+                <!--<div class="modal-body">-->
+                    <!--<p><span class="postDetail"></span></p>-->
+                    <!--<div class="row">-->
+                        <!--<div class="col-lg-12 col-md-12 col-sm-12">-->
+                        <!--<br>-->
+                        <!--<label for="category">Select Category</label>-->
+                        <!--<br><br>-->
+                            <!--<select class="form-control" id="category">-->
+                                <!--<option value="Home">Home</option>-->
+                                <!--<option value="Cars">Cars</option>-->
+                                <!--<option value="Pets">Pets</option>-->
+                                <!--<option value="Personal">Personal</option>-->
+                                <!--<option value="Other Services">Other Services</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="modal-footer">-->
+                    <!--<button type="button" class="btn btn-primary update-btn">Update</button>-->
+                    <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!-- -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="editPost" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
+                <!-- Modal Header -->
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Edit Post</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span class="sr-only">Close</span>
+                    </button>
+                        <h4 class="modal-title" id="myModalLabel">Edit Post</h4>
                 </div>
+                <!-- Modal Body -->
                 <div class="modal-body">
-                    <p><span class="postDetail"></span></p>
+                    <form role="form">
+
+                        <div class="form-group">
+                            <label for="title">Post Title</label>
+                            <textarea class="form-control" id="title"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="body" >Post Description</label>
+                            <textarea class="form-control" rows="10" id="body"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">Select Category</label>
+                            <select class="form-control" id="category">
+                                <option value="Home">Home</option>
+                                <option value="Cars">Cars</option>
+                                <option value="Pets">Pets</option>
+                                <option value="Personal">Personal</option>
+                                <option value="Other Services">Other Services</option>
+                            </select>
+                        </div>
+
+                    </form>
                 </div>
+                <!-- Modal Footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary update">Update</button>
+                    <button type="button" class="btn btn-primary" id="saveChanges">Save changes</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- -->
 
     <div class="modal fade" id="completePost">
         <div class="modal-dialog">
@@ -119,7 +184,7 @@
                         <br>
                         <label for="category">Select Category</label>
                         <br><br>
-                            <select class="form-control" id="category">
+                            <select class="form-control" id="rating">
                                 <option value="Select">Please Select</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -131,7 +196,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary update">Complete Post</button>
+                    <button type="button" class="btn btn-primary complete-btn">Complete Post</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
