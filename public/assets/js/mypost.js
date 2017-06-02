@@ -3,11 +3,17 @@ $(document).ready(function () {
     var postList = $("tbody");
     var postContainer = $(".post-container");
 
+    //Getting jQuery references to the post body, title, form, and category select
+    var bodyInput = $("#body");
+    var titleInput = $("#title");
+    var postForm = $("#newPost");
+    var postCategorySelect = $("#category");
+
 
 
     // Adding event listeners to the form to create a new object, and the buttons to edit and delete a post
-    // $(document).on("click", ".completePost", handleEditBtn);
-    $(document).on("click", ".editPost", handleCompleteBtn);
+    // $(document).on("click", "#completeBtn", handlePostComplete);
+    // $(document).on("click", "#editBtn", handlePostEdit);
 
     // Getting the initial list of Posts
     getPosts();
@@ -15,19 +21,45 @@ $(document).ready(function () {
     // Get User Reputation
     getRep();
 
+
     // Function for creating a new list row for posts
     function createPostRow(postData) {
+        var postId = "post" + postData.id;
+
         var newTr = $("<tr>");
+        newTr.attr('id', postId);
         newTr.data("posts", postData);
         console.log(postData);
         newTr.append("<td>" + postData.title + "</td>");
         newTr.append("<td>" + postData.body + "</td>");
-        // newTr.append("<td><button class='btn-success'><a href='#" + postData.id + "'>Edit Post</a></button></td>");
-        newTr.append("<td><button class='btn-success' id='editBtn'>Edit Post</button></td>");
-        newTr.append("<td><button class='btn-danger' id='completeBtn'>Complete Post</button></td>");
+        newTr.append("<td><button data-toggle='modal' class='btn-success' id='editBtn' href='#editPost'>Edit Post</button></td>");
+        newTr.append("<td><button data-toggle='modal' class='btn-danger' id='completeBtn' href='#completePost'>Complete Post</button></td>");
         return newTr;
     }
 
+    // Added
+    //Populate Edit Modal
+    $('tbody').on("click", "#editBtn", function () {
+
+        //get postId in the row
+        var postId = $(this).closest("tr").prop("id");
+        console.log(postId);
+
+        //get actual post Id
+        var actualId = postId.split("post");
+        console.log(actualId);
+
+        $.get("/api/posts/" + actualId[1], function (data) {
+            $('.modal-title').html('<h4>' + data.title + '</h4>');
+            $('.postDetail').html('<p>' + data.body + '</p>');
+
+
+        });
+
+        //set postID for help button
+        $('#submitBtn').data("postId", actualId[1]);
+    });
+    // // Added
 
     // Function for retrieving posts and getting them ready to be rendered to the page
     function getPosts() {
@@ -52,19 +84,6 @@ $(document).ready(function () {
 
     }
 
-    // Gets post data for a post if editing
-    function getPostData(id) {
-        $.get("/api/posts/" + id, function (data) {
-            if (data) {
-                postTitle.val(data.title);
-                postBody.val(data.body);
-                postCategorySelect.val(data.category);
-
-                updating = true;
-            }
-        });
-    }
-
     //Function for showing user Reputation
     function getRep() {
         $.get("/api/userRep", function (data) {
@@ -72,28 +91,25 @@ $(document).ready(function () {
         })
     }
 
-    // Update a given post, bring user to the member page when done
-    function editPost(post) {
-        $.ajax({
-            method: "PUT",
-            url: "/api/posts",
-            data: post
-        })
-            .done(function () {
-                window.location.href = "/myposts";
-            });
-    }
-
-
-    // Function for handling what happens when the remove button is clicked
-    function handleCompleteBtn() {
-        var listItemData = $(this).parent("td").parent("tr").data("post");
-        var id = listItemData.id;
-        $.ajax({
-            method: "PUT",
-            url: "/api/posts/" + id
-        })
-            .done(getPosts);
-    }
+    // // Update a given post, bring user to the member page when done
+    // function handlePostEdit(post) {
+    //     var currentPost = $(this)
+    //         .parent()
+    //         .parent()
+    //         .data("post");
+    //     window.location.href = ".update"
+    // }
+    //
+    //
+    // // Function for handling what happens when the remove button is clicked
+    // function handleCompleteBtn() {
+    //     var listItemData = $(this).parent("td").parent("tr").data("post");
+    //     var id = listItemData.id;
+    //     $.ajax({
+    //         method: "PUT",
+    //         url: "/api/posts/" + id
+    //     })
+    //         .done(getPosts);
+    // }
 
 });

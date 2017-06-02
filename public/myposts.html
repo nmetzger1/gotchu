@@ -86,6 +86,57 @@
                 </div>
             </div>
         </div>
+
+    <div class="modal fade" id="editPost">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Edit Post</h4>
+                </div>
+                <div class="modal-body">
+                    <p><span class="postDetail"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary update">Update</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="completePost">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Complete Post</h4>
+                </div>
+                <div class="modal-body">
+                    <h2>On a scale from 1-5 (5 being the highest), how would you rate your helper?</h2>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                        <br>
+                        <label for="category">Select Category</label>
+                        <br><br>
+                            <select class="form-control" id="category">
+                                <option value="Select">Please Select</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary update">Complete Post</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
