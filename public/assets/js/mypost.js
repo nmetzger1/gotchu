@@ -1,3 +1,5 @@
+var newPost = {};
+
 $(document).ready(function () {
     //Getting references to the post input and post container, as well as the table body
     var postList = $("tbody");
@@ -6,14 +8,9 @@ $(document).ready(function () {
     //Getting jQuery references to the post body, title, form, and category select
     var bodyInput = $("#body");
     var titleInput = $("#title");
-    var postForm = $("#newPost");
     var postCategorySelect = $("#category");
 
 
-
-    // Adding event listeners to the form to create a new object, and the buttons to edit and delete a post
-    // $(document).on("click", "#completeBtn", handlePostComplete);
-    // $(document).on("click", "#editBtn", handlePostEdit);
 
     // Getting the initial list of Posts
     getPosts();
@@ -29,7 +26,6 @@ $(document).ready(function () {
         var newTr = $("<tr>");
         newTr.attr('id', postId);
         newTr.data("posts", postData);
-        console.log(postData);
         newTr.append("<td>" + postData.title + "</td>");
         newTr.append("<td>" + postData.body + "</td>");
         newTr.append("<td><button data-toggle='modal' class='btn-success' id='editBtn' href='#editPost'>Edit Post</button></td>");
@@ -37,29 +33,39 @@ $(document).ready(function () {
         return newTr;
     }
 
-    // Added
-    //Populate Edit Modal
+    // Get post data for a post if editing
+
     $('tbody').on("click", "#editBtn", function () {
 
         //get postId in the row
         var postId = $(this).closest("tr").prop("id");
-        console.log(postId);
 
         //get actual post Id
         var actualId = postId.split("post");
-        console.log(actualId);
 
+        // Populate Edit Post Modal
         $.get("/api/posts/" + actualId[1], function (data) {
-            $('.modal-title').html('<h4>' + data.title + '</h4>');
-            $('.postDetail').html('<p>' + data.body + '</p>');
-
-
+            $('#title').html(data.title);
+            $('#body').html(data.body);
         });
 
-        //set postID for help button
-        $('#submitBtn').data("postId", actualId[1]);
+        //set postID for Save Changes button
+        $('#saveChanges').data("postId", actualId[1]);
     });
-    // // Added
+
+    //Update Post on Save Changes
+    $('#saveChanges').on("click", function () {
+
+        $.post("/api/posts/" + $(this).data("postId"), function () {
+            var newPost = {
+                title: titleInput.val().trim(),
+                body: bodyInput.val().trim(),
+                category: postCategorySelect.val()
+            };
+            console.log(newPost);
+            updatePost(newPost);
+        });
+    });
 
     // Function for retrieving posts and getting them ready to be rendered to the page
     function getPosts() {
@@ -78,7 +84,6 @@ $(document).ready(function () {
         postList.children().not(":last").remove();
         postContainer.children(".alert").remove();
         if (rows.length) {
-            console.log(rows);
             postList.prepend(rows);
         }
 
@@ -91,25 +96,16 @@ $(document).ready(function () {
         })
     }
 
-    // // Update a given post, bring user to the member page when done
-    // function handlePostEdit(post) {
-    //     var currentPost = $(this)
-    //         .parent()
-    //         .parent()
-    //         .data("post");
-    //     window.location.href = ".update"
-    // }
-    //
-    //
-    // // Function for handling what happens when the remove button is clicked
-    // function handleCompleteBtn() {
-    //     var listItemData = $(this).parent("td").parent("tr").data("post");
-    //     var id = listItemData.id;
-    //     $.ajax({
-    //         method: "PUT",
-    //         url: "/api/posts/" + id
-    //     })
-    //         .done(getPosts);
-    // }
+    // Update a given post, bring user to myposts page when done
+    function updatePost(post) {
+        $.ajax({
+            method: "POST",
+            url: "/api/posts",
+            data: post
+        })
+            .done(function () {
+                window.location.href = "/mypost"
+            });
+    }
 
 });

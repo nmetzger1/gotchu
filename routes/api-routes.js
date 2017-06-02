@@ -52,16 +52,23 @@ module.exports = function (app, passport) {
         })
     });
 
-// Put route for editing posts
-    app.put("/api/posts", function (req, res) {
-        db.Post.update(
-            req.body,
-            {
+    // Route for editing posts
+    app.post("/api/posts/:postId", function (req, res) {
+
+        request("http://localhost:3000/api/posts/" + req.params.postId, function (err, response, body) {
+
+            db.Post.update({
+                title: req.body.title,
+                body: req.body.body,
+                category: req.body.category
+            }, {
                 where: {
-                    id: req.body.id
+                    id: req.params.id
                 }
-            }).then(function (dbPost) {
-            res.json(dbPost);
+            })
+                .then(function (dbPost) {
+                    res.send(dbPost);
+                });
         });
     });
 
