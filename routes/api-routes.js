@@ -20,6 +20,8 @@ module.exports = function (app, passport) {
     // Get route for getting all of the posts
     app.get("/api/posts", function (req, res) {
         var query = {};
+        var zips = [];
+
         if (req.query.user_id) {
             query.UserId = req.query.user_id;
         }
@@ -29,10 +31,35 @@ module.exports = function (app, passport) {
             order: [
                 ['id', 'DESC']
             ]
-        })
-            .then(function (dbPost) {
+        }).then(function (dbPost) {
+
+            //add user ZIP codes to array
+            for(var i = 0; i < dbPost.length; i++){
+                zips.push(dbPost[i].User.zipCode);
+            }
+
+            var query = "http://localhost:3000/api/distance/" + req.user.id + "/" + zips.join("|");
+
+            //get distance
+            request(query, function (error, request, distances) {
+
+                if(error){
+                    throw error;
+                }
+
+                //parse string into array
+                var distanceArray = JSON.parse(distances);
+
+                //add zip to each post
+                for (var i = 0; i < distanceArray.length; i++){
+                    dbPost[i].dataValues.distance = distanceArray[i];
+                }
+
+                //Send post data
                 res.json(dbPost);
             });
+
+        });
     });
 
     // Get route for retrieving a single post
@@ -92,7 +119,6 @@ module.exports = function (app, passport) {
                 else {
                     res.send("0");
                 }
-
             })
         })
 
@@ -113,27 +139,19 @@ module.exports = function (app, passport) {
     });
 
     // ZIP Code Distance
-    app.get("/api/distance/:userId", function (req, res) {
+    app.get("/api/distance/:user1/:zipCodes", function (req, res) {
 
         var userId = req.params.userId;
 
         db.User.findAll({
             where: {
-                id: {
-                    $in: [req.user.id, req.params.userId]
-                }
+                id: req.params.user1
             }
         }).then(function (zipData) {
 
             var apiKey = "AIzaSyCCV5MXvW_T_3aruX8UepqRyA1Q-aEWhFA";
             var zip1 = zipData[0].zipCode;
-
-            //check if second zip is returned
-            if(zipData[1] === undefined){
-                res.send("0 miles");
-                return;
-            }
-            var zip2 = zipData[1].zipCode;
+            var zip2 = req.params.zipCodes;
 
             var query = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + zip1 + "&destinations=" + zip2 + "&key=" + apiKey;
 
@@ -144,7 +162,13 @@ module.exports = function (app, passport) {
 
                 var data = JSON.parse(body);
 
-                res.send(data.rows[0].elements[0].distance.text);
+                var distanceArray = [];
+
+                for(var i = 0; i < data.rows[0].elements.length; i++){
+                    distanceArray.push(data.rows[0].elements[i].distance.text);
+                }
+
+                res.send(JSON.stringify(distanceArray));
             })
         });
     });
