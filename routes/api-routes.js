@@ -55,8 +55,6 @@ module.exports = function (app, passport) {
     // Route for editing posts
     app.post("/api/posts/:postId", function (req, res) {
 
-        console.log("UPDATE", req.body);
-
         db.Post.update({
             title: req.body.title,
             body: req.body.body,
@@ -74,13 +72,12 @@ module.exports = function (app, passport) {
 //ADD TO HELPER TABLE
     app.post("/api/helper/:postId", function (req, res) {
 
-        var userId = req.user.id;
+        getPostById(req.params.postId, function (body) {
 
-        var query = {};
-        query.userId = userId;
+            console.log("HELPER BODY", body);
 
-        getAllPosts(userId, query, function (body) {
-            var userData = JSON.parse(body);
+            var userData = body;
+            //var userData = JSON.parse(body);
 
             if(userData.id === parseInt(req.user.id)){
                 res.send("You cannot volunteer for your own post.")
@@ -183,6 +180,18 @@ module.exports = function (app, passport) {
                 callback(dbPost);
             });
         });
+    }
+
+    //GET POSTS BY POSTID
+    function getPostById(postId, callback) {
+
+        db.Post.findOne({
+            where: {
+                id: postId
+            }
+        }).then(function (data) {
+            callback(data);
+        })
     }
 
     // ZIP Code Distance
