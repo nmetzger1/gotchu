@@ -206,6 +206,11 @@ module.exports = function (app, passport) {
 
                 if(data.status === "OVER_QUERY_LIMIT"){
                     console.log("Over query limit");
+
+                    //replace with error text
+                    for(var i = 0; i < zipCodes.length; i++){
+                        distanceArray.push("over API limit");
+                    }
                 }
                 else {
                     for(var i = 0; i < data.rows[0].elements.length; i++){
