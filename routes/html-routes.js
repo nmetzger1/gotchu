@@ -25,7 +25,7 @@ module.exports = function (app, passport) {
     });
 
     // CREATE POST Page
-    app.get("/createpost", function (req, res) {
+    app.get("/createpost", isLoggedIn, function (req, res) {
         var options = {
             user: req.user.id
         };
