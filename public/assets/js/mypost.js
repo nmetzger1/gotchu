@@ -62,7 +62,6 @@ $(document).ready(function () {
                 body: bodyInput.val().trim(),
                 category: postCategorySelect.val()
             };
-            console.log(newPost);
             updatePost(newPost);
         });
     });

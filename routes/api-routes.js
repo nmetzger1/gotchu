@@ -176,8 +176,6 @@ module.exports = function (app, passport) {
                     dbPost[i].dataValues.distance = distanceArray[i];
                 }
 
-                console.log("FUNCTION", dbPost);
-
                 //Send post data
                 callback(dbPost);
             });

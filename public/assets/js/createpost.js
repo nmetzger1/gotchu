@@ -24,7 +24,6 @@ $(document).ready(function () {
             category: postCategorySelect.val()
 
         };
-        console.log("New post: " + newPost);
         // If we're updating a post run updatePost to update a post
         // Otherwise run submitPost to create a whole new post
         if (updating) {

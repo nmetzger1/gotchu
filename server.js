@@ -10,7 +10,7 @@ var flash = require("connect-flash");
 
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
-var session      = require('express-session');
+var session      = require('cookie-session');
 
 // Sets up the Express App
 
@@ -39,7 +39,11 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser());
 
-app.use(session({secret: 'thisisasupersecretthing'}));
+app.use(session({
+    name: 'session',
+    keys: ['aeoiadsklankj'],
+    maxAge: 24 * 60 * 60 * 1000
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
