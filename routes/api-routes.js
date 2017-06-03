@@ -204,10 +204,15 @@ module.exports = function (app, passport) {
                 var data = JSON.parse(body);
                 var distanceArray = [];
 
-                for(var i = 0; i < data.rows[0].elements.length; i++){
-                    distanceArray.push(data.rows[0].elements[i].distance.text);
+                if(data.status === "OVER_QUERY_LIMIT"){
+                    console.log("Over query limit");
                 }
+                else {
+                    for(var i = 0; i < data.rows[0].elements.length; i++){
+                        distanceArray.push(data.rows[0].elements[i].distance.text);
 
+                    }
+                }
                 callback(JSON.stringify(distanceArray));
             })
         });
