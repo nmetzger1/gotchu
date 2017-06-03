@@ -55,28 +55,31 @@ module.exports = function (app, passport) {
     // Route for editing posts
     app.post("/api/posts/:postId", function (req, res) {
 
-        request("http://localhost:3000/api/posts/" + req.params.postId, function (err, response, body) {
+        console.log("UPDATE", req.body);
 
-            db.Post.update({
-                title: req.body.title,
-                body: req.body.body,
-                category: req.body.category
-            }, {
-                where: {
-                    id: req.params.id
-                }
-            })
-                .then(function (dbPost) {
-                    res.send(dbPost);
-                });
-        });
+        db.Post.update({
+            title: req.body.title,
+            body: req.body.body,
+            category: req.body.category
+        }, {
+            where: {
+                id: req.params.postId
+            }
+        })
+            .then(function (dbPost) {
+                res.send(dbPost);
+            });
     });
 
 //ADD TO HELPER TABLE
     app.post("/api/helper/:postId", function (req, res) {
 
-        request("http://localhost:3000/api/posts/" + req.params.postId, function (err, response, body) {
+        var userId = req.user.id;
 
+        var query = {};
+        query.userId = userId;
+
+        getAllPosts(userId, query, function (body) {
             var userData = JSON.parse(body);
 
             if(userData.id === parseInt(req.user.id)){
@@ -91,7 +94,7 @@ module.exports = function (app, passport) {
                     res.send(helperData);
                 })
             }
-        });
+        })
     });
 
     app.get("/api/userRep/", function (req, res) {

@@ -56,14 +56,16 @@ $(document).ready(function () {
     //Update Post on Save Changes
     $('#saveChanges').on("click", function () {
 
-        $.post("/api/posts/" + $(this).data("postId"), function () {
-            var newPost = {
-                title: titleInput.val().trim(),
-                body: bodyInput.val().trim(),
-                category: postCategorySelect.val()
-            };
-            updatePost(newPost);
-        });
+        var newPost = {
+            title: titleInput.val().trim(),
+            body: bodyInput.val().trim(),
+            category: postCategorySelect.val()
+        };
+
+        $.post("/api/posts/" + $(this).data("postId"), newPost)
+            .done(function () {
+                window.location.href = "/myposts";
+            })
     });
 
     // Function for retrieving posts and getting them ready to be rendered to the page
@@ -93,18 +95,6 @@ $(document).ready(function () {
         $.get("/api/userRep", function (data) {
             $('.reputation').html("My Rep: " + data);
         })
-    }
-
-    // Update a given post, bring user to myposts page when done
-    function updatePost(post) {
-        $.ajax({
-            method: "POST",
-            url: "/api/posts",
-            data: post
-        })
-            .done(function () {
-                window.location.href = "/mypost"
-            });
     }
 
 });
